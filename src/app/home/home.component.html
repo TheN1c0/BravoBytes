@@ -1,0 +1,66 @@
+<div class="body">
+  <div class="container">
+    <!-- Barra superior -->
+    <nav class="navbar">
+      <ul>
+        <li><a class="menu" href="#">Inicio</a></li>
+        <li><a class="menu" href="#">Servicios</a></li>
+        <li><a class="menu" href="#">Proyectos</a></li>
+        <li><a class="menu" href="#">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="content">
+      <section class="main-section">
+        <div id="texto1">
+          <div id="titulo">
+            <h1>
+              <span *ngFor="let letra of letrasAnimadas" class="letra" [attr.data-letra]="letra">{{letra}}</span>
+            </h1>
+          </div>
+          <div id="contenido_introduccion">
+            <p>Soy desarrollador, especializado como Analista Programador, 
+              en constante crecimiento. Bienvenido a mi página web, 
+              donde encontrarás contenido sobre mis intereses y habilidades
+              en el mundo de la tecnología y ciencia. ¡Espero que disfrutes
+                tu estancia!</p>
+          </div>
+        </div>
+      </section>
+
+        <div id="opciones">
+
+          <div class="op" id="Habilidades">
+            <h2>Habilidades para Programador</h2>
+            <div class="contenedor-habilidades">
+                <div class="habilidad">Python</div>
+                <div class="habilidad">JavaScript</div>
+                <div class="habilidad">SQL</div>
+                <div class="habilidad">HTML & CSS</div>
+                <div class="habilidad">C++</div>
+                <div class="habilidad">Java</div>
+            </div>
+          </div>
+          <div class="op">
+            <h2>Proyectos destacados</h2>
+            <h3>Sistema de gestión de servicios</h3>
+            <a href="https://github.com/TheN1c0/Arct_pro_gsi.git">Parte 1: Front-end  - cliente</a>
+            <br>
+            <a href="https://github.com/TheN1c0/Arct_pro_gsi_API.git">Parte 2: API - servidor</a>
+            
+
+          </div>
+          <div class="op">
+            <h2>Investigación</h2>
+            <p>En este enlace subo Investigaciones personales,
+               basadas en bases de datos, con fuentes confiables, con el fin
+              de expandir mi conocimiento y ser más que solo un desarrollador.</p>
+              <a href="">Blogg</a>
+          </div>
+
+        </div>
+    
+    </main>
+  </div>
+</div>
