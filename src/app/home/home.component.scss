@@ -204,6 +204,12 @@
         font-size: small;
     }
 }
+
+@media(min-width:425px){
+    .navbar{
+        padding: 0;
+    }
+}
 .letra:nth-child(1) {
     animation-delay: 0s;
 }
