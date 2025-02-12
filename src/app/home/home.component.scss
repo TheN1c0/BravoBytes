@@ -194,8 +194,43 @@
     }
 }
 
-
-@media (min-width:610px){
+.desplegable{
+    display: none;
+    background-color: #333;
+}
+.desplegable ul {
+    list-style: none;  /* Elimina los puntos */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .desplegable li {
+    padding: 10px 0;  /* Espaciado entre elementos */
+    border-bottom: 1px solid #ccc; /* Línea separadora */
+    text-align: center; /* Centrar texto (opcional) */
+  }
+  
+  /* Evita la línea en el último elemento */
+  .desplegable li:last-child {
+    border-bottom: none;
+  }
+  .desplegable a {
+    text-decoration: none; /* Quita el subrayado */
+    color: white; /* Cambia el color del texto a blanco */
+    display: block; /* Hace que ocupen todo el ancho del contenedor */
+    padding: 10px 0; /* Espaciado */
+  }
+  
+  /* Opcional: Cambiar color al pasar el mouse */
+  .desplegable a:hover {
+    color: #ddd; /* Un blanco más suave al pasar el mouse */
+  }
+  .salto-linea::after {
+    content: "\A"; /* Agrega un salto de línea */
+    white-space: pre; /* Mantiene el salto de línea */
+    display: none; /* Oculto por defecto */
+  }
+@media (max-width:610px){
     #contenido_introduccion {
         font-size: 2.5rem;
         padding: 2%; 
@@ -203,13 +238,58 @@
         height: 50%;
         font-size: small;
     }
+    .menu-pc{
+        display: none;
+        
+    }
+    .menu-toggle{
+        display: block;
+        color: white;
+    }
+    .desplegable{
+        display: block;
+    max-height: 0;
+    overflow: hidden;
+     transition: max-height 0.5s ease-out;
+}
+.desplegable.active {
+    max-height: 500px; /* o cualquier valor que sea suficiente para el contenido */
+  }
+/* Estilo para las rayitas del botón de menú */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .menu-toggle .bar {
+    width: 30px;  /* Ancho de las barras */
+    height: 4px;  /* Alto de las barras */
+    background-color: white;  /* Color de las barras */
+    border-radius: 5px;  /* Bordes redondeados para un mejor aspecto */
+    transition: all 0.3s ease;  /* Transición suave al interactuar con el menú */
+  }
+  
+  /* Si lo deseas, puedes agregar un efecto visual cuando el menú está abierto, cambiando el aspecto de las barras */
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(7px);  /* Primera barra, girada */
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;  /* Segunda barra, oculta */
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-7px);  /* Tercera barra, girada */
+  }
+  
 }
 
-@media(min-width:425px){
-    .navbar{
-        padding: 0;
-    }
-}
+
+
+  
 .letra:nth-child(1) {
     animation-delay: 0s;
 }

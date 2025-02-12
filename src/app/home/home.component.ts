@@ -10,6 +10,7 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   
+  isMenuOpen = false;
   constructor(
     private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -58,6 +59,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
         clearInterval(intervalo);
       }
     }, 200); // Cambiar la letra cada 200ms
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
 }
