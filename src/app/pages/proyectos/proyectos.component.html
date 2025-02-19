@@ -1,0 +1,37 @@
+<div class="body">
+    <div class="container">
+  
+      
+      <!-- Barra superior -->
+      <nav class="navbar">
+        <div class="menu-pc">
+          <ul>
+            <li><a class="menu" href="#">Inicio</a></li>
+            <li><a class="menu" href="#">Servicios</a></li>
+            <li><a class="menu" href="#">Proyectos</a></li>
+            <li><a class="menu" routerLink="/contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="menu-toggle"  (click)="toggleMenu()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+  
+        
+      </nav>
+      <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
+              <ul>
+                <li><a class="menu" href="#">Inicio</a></li>
+                <li><a class="menu" href="#">Servicios</a></li>
+                <li><a class="menu" href="#">Proyectos</a></li>
+                <li><a class="menu" href="#">Contacto</a></li>
+              </ul>
+      </div>
+      <!-- Contenido principal -->
+      <main class="content">
+        
+      </main>
+    </div>
+  </div>
+  

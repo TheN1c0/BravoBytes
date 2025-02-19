@@ -7,9 +7,9 @@
       <div class="menu-pc">
         <ul>
           <li><a class="menu" href="#">Inicio</a></li>
-          <li><a class="menu" href="#">Servicios</a></li>
-          <li><a class="menu" href="#">Proyectos</a></li>
-          <li><a class="menu" href="#">Contacto</a></li>
+          <li><a class="menu" (click)="servicios()">Servicios</a></li>
+          <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
         </ul>
       </div>
       <div class="menu-toggle"  (click)="toggleMenu()">
@@ -52,12 +52,18 @@
           <div class="op" id="Habilidades">
             <h2>Habilidades para Programador</h2>
             <div class="contenedor-habilidades">
+                <h3>Lenguajes:</h3>
                 <div class="habilidad">Python</div>
                 <div class="habilidad">JavaScript</div>
                 <div class="habilidad">SQL</div>
-                <div class="habilidad">HTML & CSS</div>
-                <div class="habilidad">C++</div>
+                <div class="habilidad">HTML & CSS (Aunque no es un lenguaje como tal)</div>
                 <div class="habilidad">Java</div>
+                <h3>Frameworks</h3>
+                <div>Django</div>
+                <div>Angular</div>
+                <h3>Aprendiendo...</h3>
+                <div>Machine Learning: Numpy, Pandas, Regrsión Lineal, Scikit-learn</div>
+                <div>Excel: Intermedio - Avanzado</div>
             </div>
           </div>
           <div class="op">
@@ -74,7 +80,7 @@
             <p>En este enlace subo Investigaciones personales,
                basadas en bases de datos, con fuentes confiables, con el fin
               de expandir mi conocimiento y ser más que solo un desarrollador.</p>
-              <a href="">Blogg</a>
+              <a (click)="blogs()">Blogg</a>
           </div>
 
         </div>

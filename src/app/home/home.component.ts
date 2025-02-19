@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -13,7 +13,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   isMenuOpen = false;
   constructor(
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router
   ) {}
 
   ngAfterViewInit(): void {
@@ -64,5 +65,19 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+  contacto(){
+    this.router.navigate(['/contacto']);
+  }
+  blogs(){
+    this.router.navigate(['/blogs']);
+  }
+  proyectos(){
+    this.router.navigate(['/proyectos']);
+  }
+  servicios(){
+    this.router.navigate(['/servicios']);
+  }
+
 
 }

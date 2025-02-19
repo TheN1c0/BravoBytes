@@ -1,0 +1,379 @@
+.body {
+    
+    background: linear-gradient(45deg, #ecf0f1, #bdc3c7, #2c3e50);  
+    background-size: 400% 400%;  
+    animation: gradientMove 40s linear infinite; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-attachment: fixed;
+    height: 100%;
+    padding: 0;
+}
+
+/* #img-linkedin{
+    height:1vh ;
+} */
+
+@keyframes gradientMove {
+    0% {
+      background-position: 0% 50%; 
+    }
+    25% {
+      background-position: 25% 50%;  
+    }
+    50% {
+      background-position: 50% 50%; 
+    }
+    75% {
+      background-position: 25% 50%;  
+    }
+    100% {
+      background-position: 0% 50%;  
+    }
+  }
+  
+.glass-container {
+    
+    width: 100vw;
+    height: 400px;
+    
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+  
+  
+  
+  
+
+.container {
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+} 
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 0;
+    height: 8vh;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.navbar li {
+    color: #fff;
+    display: grid;
+    place-content: center;
+    margin: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    position: relative; 
+}
+
+
+.navbar a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0); 
+    transition: all .5s ease;
+    bottom: 0;
+    left: 0;
+}
+
+.navbar a:hover::before {
+    transform: scaleX(1); 
+}
+
+
+.content {
+    display: flex; /* Cambiado de block a flex */
+    flex-direction: column; /* Opcional: asegura que los elementos se apilen en columna */
+    justify-content: center; /* Centra en el eje vertical si hay altura definida */
+    align-items: center; /* Centra en el eje horizontal */
+    background-color: #000000ef;
+    color: white;
+    min-height: 100vh;
+}
+.main-section {
+    text-align: justify;
+    
+    background-size: cover;
+    width: 88%;
+    
+    color: #fff;
+    padding: 5%;
+    flex:1;
+    overflow: hidden;
+}
+#contactos{
+    display: flex; /* Asegura que los elementos dentro también puedan alinearse */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%; /* O ajusta según necesidad */
+    flex-direction: column;
+}
+
+#titulo {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    position: relative;
+    display: flex;
+    overflow: hidden; 
+}
+
+.letra {
+    display: inline-block;
+    position: relative;
+    font-size: 3rem;
+    padding: 0 10px;
+    animation: cambio 3s forwards; 
+    border: 2px solid white;
+    text-align: center;
+    transform-style: preserve-3d;
+    opacity: 1; 
+}
+
+@media (max-width:610px) {
+
+    .letra {
+        font-size: 2rem;
+    }
+    #titulo {
+        font-size: 1.5rem;
+    }
+    
+    .glass-container {
+        height: auto;
+    }
+    .navbar {
+        padding: 5% 0; 
+    }
+    .main-section {
+        padding: 8% 4%; 
+    }
+    
+    #opciones {
+    
+        background-color: #33333392;
+        display: flex;
+        flex-direction: column; 
+    }
+    .op {
+     
+        margin: 2%;
+        padding: 2%;
+    }
+    .op:hover {
+        border-color: white;
+        box-shadow: 0 0 15px white;
+        transform: scale(1.1);
+    }
+}
+
+.desplegable{
+    display: none;
+    background-color: #333;
+}
+.desplegable ul {
+    list-style: none;  /* Elimina los puntos */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .desplegable li {
+    padding: 10px 0;  /* Espaciado entre elementos */
+    border-bottom: 1px solid #ccc; /* Línea separadora */
+    text-align: center; /* Centrar texto (opcional) */
+  }
+  
+  /* Evita la línea en el último elemento */
+  .desplegable li:last-child {
+    border-bottom: none;
+  }
+  .desplegable a {
+    text-decoration: none; /* Quita el subrayado */
+    color: white; /* Cambia el color del texto a blanco */
+    display: block; /* Hace que ocupen todo el ancho del contenedor */
+    padding: 10px 0; /* Espaciado */
+  }
+  
+  /* Opcional: Cambiar color al pasar el mouse */
+  .desplegable a:hover {
+    color: #ddd; /* Un blanco más suave al pasar el mouse */
+  }
+  .salto-linea::after {
+    content: "\A"; /* Agrega un salto de línea */
+    white-space: pre; /* Mantiene el salto de línea */
+    display: none; /* Oculto por defecto */
+  }
+@media (max-width:610px){
+    #contenido_introduccion {
+        font-size: 2.5rem;
+        padding: 2%; 
+        color: red;
+        height: 50%;
+        font-size: small;
+    }
+    .menu-pc{
+        display: none;
+        
+    }
+    .menu-toggle{
+        display: block;
+        color: white;
+    }
+    .desplegable{
+        display: block;
+    max-height: 0;
+    overflow: hidden;
+     transition: max-height 0.5s ease-out;
+}
+.desplegable.active {
+    max-height: 500px; /* o cualquier valor que sea suficiente para el contenido */
+  }
+/* Estilo para las rayitas del botón de menú */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .menu-toggle .bar {
+    width: 30px;  /* Ancho de las barras */
+    height: 4px;  /* Alto de las barras */
+    background-color: white;  /* Color de las barras */
+    border-radius: 5px;  /* Bordes redondeados para un mejor aspecto */
+    transition: all 0.3s ease;  /* Transición suave al interactuar con el menú */
+  }
+  
+  /* Si lo deseas, puedes agregar un efecto visual cuando el menú está abierto, cambiando el aspecto de las barras */
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(7px);  /* Primera barra, girada */
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;  /* Segunda barra, oculta */
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-7px);  /* Tercera barra, girada */
+  }
+  
+}
+
+
+
+  
+.letra:nth-child(1) {
+    animation-delay: 0s;
+}
+.letra:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.letra:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.letra:nth-child(4) {
+    animation-delay: 0.6s;
+}
+.letra:nth-child(5) {
+    animation-delay: 0.8s;
+}
+.letra:nth-child(6) {
+    animation-delay: 1s;
+}
+.letra:nth-child(7) {
+    animation-delay: 1.2s;
+}
+.letra:nth-child(8) {
+    animation-delay: 1.4s;
+}
+.letra:nth-child(9) {
+    animation-delay: 1.6s;
+}
+.letra:nth-child(10) {
+    animation-delay: 1.8s;
+}
+
+
+@keyframes cambio {
+    0% {
+        opacity: 1; 
+        transform: rotateX(0deg); 
+    }
+    40% {
+        opacity: 1; 
+        transform: rotateX(0deg); 
+    }
+    60% {
+        opacity: 1; 
+        transform: rotateX(180deg); 
+    }
+    100% {
+        opacity: 1; 
+        transform: rotateX(0deg); 
+    }
+}
+
+#contenido_introduccion{
+    background-color: #33333392;
+    font-size: 1.5rem;
+    word-wrap: break-word;
+}
+
+#opciones{
+    margin-top: 20vh;
+    background-color: #33333392 ;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.op{
+    background-color: #111111;
+    border: solid black 1px;
+    border-radius: 10px;
+    flex: 1;
+    margin: 2%;
+    padding: 1%;
+    color: #b1b1b1;
+    width: 100%;
+    
+}
+
+.op:hover{
+    border-color: white;  
+    box-shadow: 0 0 15px white; 
+    transform: scale(1.1);
+}
