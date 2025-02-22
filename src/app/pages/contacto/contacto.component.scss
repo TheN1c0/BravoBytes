@@ -152,17 +152,7 @@
     overflow: hidden; 
 }
 
-.letra {
-    display: inline-block;
-    position: relative;
-    font-size: 3rem;
-    padding: 0 10px;
-    animation: cambio 3s forwards; 
-    border: 2px solid white;
-    text-align: center;
-    transform-style: preserve-3d;
-    opacity: 1; 
-}
+
 
 @media (max-width:610px) {
 
@@ -379,4 +369,7 @@
     border-color: white;  
     box-shadow: 0 0 15px white; 
     transform: scale(1.1);
+}
+h1{
+    user-select: none;
 }
