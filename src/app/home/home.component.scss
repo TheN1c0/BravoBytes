@@ -50,6 +50,7 @@
     justify-content: center;
     color: #fff;
     text-align: center;
+    user-select: none;
   }
   
   
@@ -71,6 +72,7 @@
     background-color: #333;
     padding: 10px 0;
     height: 8vh;
+    user-select: none;
 }
 
 .navbar ul {
@@ -91,6 +93,8 @@
     color: white;
     font-size: 18px;
     position: relative; 
+    user-select: none;
+    cursor: pointer;
 }
 
 
@@ -155,6 +159,7 @@
     text-align: center;
     transform-style: preserve-3d;
     opacity: 1; 
+    user-select: none;
 }
 
 @media (max-width:610px) {
@@ -199,36 +204,36 @@
     background-color: #333;
 }
 .desplegable ul {
-    list-style: none;  /* Elimina los puntos */
+    list-style: none; 
     padding: 0;
     margin: 0;
   }
   
   .desplegable li {
-    padding: 10px 0;  /* Espaciado entre elementos */
-    border-bottom: 1px solid #ccc; /* Línea separadora */
-    text-align: center; /* Centrar texto (opcional) */
+    padding: 10px 0;  
+    border-bottom: 1px solid #ccc; 
+    text-align: center; 
   }
   
-  /* Evita la línea en el último elemento */
+ 
   .desplegable li:last-child {
     border-bottom: none;
   }
   .desplegable a {
-    text-decoration: none; /* Quita el subrayado */
-    color: white; /* Cambia el color del texto a blanco */
-    display: block; /* Hace que ocupen todo el ancho del contenedor */
-    padding: 10px 0; /* Espaciado */
+    text-decoration: none; 
+    color: white; 
+    display: block; 
+    padding: 10px 0; 
   }
   
-  /* Opcional: Cambiar color al pasar el mouse */
+  
   .desplegable a:hover {
-    color: #ddd; /* Un blanco más suave al pasar el mouse */
+    color: #ddd; 
   }
   .salto-linea::after {
-    content: "\A"; /* Agrega un salto de línea */
-    white-space: pre; /* Mantiene el salto de línea */
-    display: none; /* Oculto por defecto */
+    content: "\A"; 
+    white-space: pre; 
+    display: none; 
   }
 @media (max-width:610px){
     #contenido_introduccion {
@@ -253,9 +258,9 @@
      transition: max-height 0.5s ease-out;
 }
 .desplegable.active {
-    max-height: 500px; /* o cualquier valor que sea suficiente para el contenido */
+    max-height: 500px; 
   }
-/* Estilo para las rayitas del botón de menú */
+
 .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -265,24 +270,24 @@
   }
   
   .menu-toggle .bar {
-    width: 30px;  /* Ancho de las barras */
-    height: 4px;  /* Alto de las barras */
-    background-color: white;  /* Color de las barras */
-    border-radius: 5px;  /* Bordes redondeados para un mejor aspecto */
-    transition: all 0.3s ease;  /* Transición suave al interactuar con el menú */
+    width: 30px;  
+    height: 4px;  
+    background-color: white;  
+    border-radius: 5px;  
+    transition: all 0.3s ease;  
   }
   
-  /* Si lo deseas, puedes agregar un efecto visual cuando el menú está abierto, cambiando el aspecto de las barras */
+
   .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translateY(7px);  /* Primera barra, girada */
+    transform: rotate(45deg) translateY(7px);  
   }
   
   .menu-toggle.active .bar:nth-child(2) {
-    opacity: 0;  /* Segunda barra, oculta */
+    opacity: 0; 
   }
   
   .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translateY(-7px);  /* Tercera barra, girada */
+    transform: rotate(-45deg) translateY(-7px);  
   }
   
 }
@@ -372,4 +377,11 @@
     border-color: white;  
     box-shadow: 0 0 15px white; 
     transform: scale(1.1);
+}
+
+#linkblog{
+    color: rgb(23, 81, 96);
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline;
 }

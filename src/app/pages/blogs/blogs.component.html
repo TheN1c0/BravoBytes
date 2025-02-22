@@ -4,10 +4,10 @@
       <nav class="navbar">
         <div class="menu-pc">
           <ul>
-            <li><a class="menu" href="#">Inicio</a></li>
-            <li><a class="menu" href="#">Servicios</a></li>
-            <li><a class="menu" href="#">Proyectos</a></li>
-            <li><a class="menu" routerLink="/contacto">Contacto</a></li>
+            <li><a class="menu" (click)="inicio()">Inicio</a></li>
+            <li><a class="menu" (click)="servicios()">Servicios</a></li>
+            <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+            <li><a class="menu" (click)="contacto()" >Contacto</a></li>
           </ul>
         </div>
         <div class="menu-toggle" (click)="toggleMenu()">
@@ -19,10 +19,10 @@
   
       <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
         <ul>
-          <li><a class="menu" href="#">Inicio</a></li>
-          <li><a class="menu" href="#">Servicios</a></li>
-          <li><a class="menu" href="#">Proyectos</a></li>
-          <li><a class="menu" href="#">Contacto</a></li>
+          <li><a class="menu" (click)="inicio()">Inicio</a></li>
+          <li><a class="menu" (click)="servicios()">Servicios</a></li>
+          <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
         </ul>
       </div>
   

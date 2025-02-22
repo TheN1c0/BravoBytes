@@ -78,6 +78,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   servicios(){
     this.router.navigate(['/servicios']);
   }
+  inicio(){
+    this.router.navigate(['/home']);
+  }
 
 
 }
