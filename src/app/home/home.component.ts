@@ -1,6 +1,9 @@
 import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -14,11 +17,23 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   constructor(
     private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router
+    private router: Router,
+    private titleService: Title,
+    private metaService: Meta
   ) {}
-
+  ngOnInit() {
+    this.titleService.setTitle('Mi Portafolio - Desarrollo Web y Programación');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Soy desarrollador especializado como Analista Programador. En mi página web encontrarás contenido sobre mis habilidades, proyectos y mi pasión por la tecnología.'
+    });
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'desarrollador, analista programador, programación, Python, JavaScript, Angular, Django, desarrollo web, machine learning, proyectos, tecnología'
+    });
+  }
   ngAfterViewInit(): void {
-    // Verificamos si estamos en un entorno de navegador
+    
     if (isPlatformBrowser(this.platformId)) {
       this.iniciarAnimacion();
     }
@@ -59,7 +74,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       } else {
         clearInterval(intervalo);
       }
-    }, 200); // Cambiar la letra cada 200ms
+    }, 200); 
   }
 
   toggleMenu() {
