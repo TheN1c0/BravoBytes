@@ -14,15 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ProyectosComponent {
   isMenuOpen = false;
-  imagen1: string = 'proyectosimg/inicio.png'; // Ruta de la imagen
+  imagen1: string = 'proyectosimg/inicio.png'; 
 
-  listaProyectos: any[] = []; // Inicializa la lista vacía
+  listaProyectos: any[] = []; 
 
   constructor(private router: Router) {
-    this.inicializarListaProyectos(); // Llama a la función de inicialización
+    this.inicializarListaProyectos(); 
   }
 
-  // Función para inicializar la lista de proyectos
+  
   inicializarListaProyectos() {
     this.listaProyectos = [
       {
