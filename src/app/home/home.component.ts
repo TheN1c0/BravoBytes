@@ -1,101 +1,149 @@
-import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser, CommonModule } from '@angular/common';
+import {
+  Component,
+  AfterViewInit,
+  OnDestroy,
+  OnInit,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
+
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { Meta } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],  // Asegúrate de incluir CommonModule aquí
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
-  
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  // -------------------------
+  // Estado menú
+  // -------------------------
   isMenuOpen = false;
+
+  // -------------------------
+  // Animación letras
+  // -------------------------
+  letras = ['B', 'r', 'a', 'v', 'o', 'B', 'y', 't', 'e', 's'];
+  letrasAnimadas = Array(this.letras.length).fill('0');
+
+  private intervalId: ReturnType<typeof setInterval> | null = null;
+  private isBrowser: boolean;
+
   constructor(
-    private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
     private titleService: Title,
     private metaService: Meta
-  ) {}
-  ngOnInit() {
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  // -------------------------
+  // SEO
+  // -------------------------
+  ngOnInit(): void {
     this.titleService.setTitle('Mi Portafolio - Desarrollo Web y Programación');
+
     this.metaService.updateTag({
       name: 'description',
-      content: 'Soy desarrollador especializado como Analista Programador. En mi página web encontrarás contenido sobre mis habilidades, proyectos y mi pasión por la tecnología.'
+      content:
+        'Soy desarrollador especializado como Analista Programador. Aquí encontrarás mis habilidades, proyectos y mi pasión por la tecnología.'
     });
+
     this.metaService.updateTag({
       name: 'keywords',
-      content: 'desarrollador, analista programador, programación, Python, JavaScript, Angular, Django, desarrollo web, machine learning, proyectos, tecnología'
+      content:
+        'desarrollador, analista programador, programación, Python, JavaScript, Angular, Django, desarrollo web, machine learning, proyectos'
     });
   }
+
+  // -------------------------
+  // Lifecycle
+  // -------------------------
   ngAfterViewInit(): void {
-    
-    if (isPlatformBrowser(this.platformId)) {
-      this.iniciarAnimacion();
-    }
-    
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', this.onScroll);
-    }
+    if (!this.isBrowser) return;
+
+    this.iniciarAnimacion();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
   }
 
   ngOnDestroy(): void {
-    // Limpiamos el listener cuando el componente se destruye
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', this.onScroll);
+    if (!this.isBrowser) return;
+
+    window.removeEventListener('scroll', this.onScroll);
+
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
     }
   }
 
-  // Función flecha para mantener el contexto adecuado de 'this'
+  // -------------------------
+  // Scroll handler
+  // -------------------------
   onScroll = (): void => {
     const content = document.querySelector('.content');
-    if (content) {
-      if (window.scrollY > 50) {
-        content.classList.add('scrolled');
-      } else {
-        content.classList.remove('scrolled');
-      }
-    }
-  }
+    if (!content) return;
 
-  letras = ['B', 'r', 'a', 'v', 'o', 'B', 'y', 't', 'e', 's'];
-  letrasAnimadas = Array(9).fill('0'); // Inicializa las letras con '0'
+    if (window.scrollY > 50) content.classList.add('scrolled');
+    else content.classList.remove('scrolled');
+  };
 
+  // -------------------------
+  // Animación título
+  // -------------------------
   iniciarAnimacion(): void {
     let index = 0;
-    const intervalo = setInterval(() => {
+
+    this.intervalId = setInterval(() => {
       if (index < this.letras.length) {
-        this.letrasAnimadas[index] = this.letras[index]; // Actualiza las letras
+        this.letrasAnimadas[index] = this.letras[index];
         index++;
       } else {
-        clearInterval(intervalo);
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+        }
       }
-    }, 200); 
+    }, 200);
   }
 
-  toggleMenu() {
+  // -------------------------
+  // Menú móvil
+  // -------------------------
+  toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  contacto(){
-    this.router.navigate(['/contacto']);
+  closeMenu(): void {
+    this.isMenuOpen = false;
   }
-  blogs(){
-    this.router.navigate(['/blogs']);
-  }
-  proyectos(){
-    this.router.navigate(['/proyectos']);
-  }
-  servicios(){
-    this.router.navigate(['/servicios']);
-  }
-  inicio(){
+
+  // -------------------------
+  // Navegación
+  // -------------------------
+  inicio(): void {
     this.router.navigate(['/home']);
   }
 
+  servicios(): void {
+    this.router.navigate(['/servicios']);
+  }
 
+  proyectos(): void {
+    this.router.navigate(['/proyectos']);
+  }
+
+  contacto(): void {
+    this.router.navigate(['/contacto']);
+  }
+
+  blogs(): void {
+    this.router.navigate(['/blogs']);
+  }
 }

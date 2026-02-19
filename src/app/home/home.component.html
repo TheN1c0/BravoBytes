@@ -1,7 +1,6 @@
 <div class="body">
   <div class="container">
 
-    
     <!-- Barra superior -->
     <nav class="navbar">
       <div class="menu-pc">
@@ -9,82 +8,139 @@
           <li><a class="menu" (click)="inicio()">Inicio</a></li>
           <li><a class="menu" (click)="servicios()">Servicios</a></li>
           <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
+          <li><a class="menu" (click)="contacto()">Contacto</a></li>
         </ul>
-      </div>
-      <div class="menu-toggle"  (click)="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
       </div>
 
-      
+      <!-- Botón hamburguesa (móvil) -->
+      <button
+        type="button"
+        class="menu-toggle"
+        (click)="toggleMenu()"
+        [class.active]="isMenuOpen"
+        aria-label="Abrir menú"
+        [attr.aria-expanded]="isMenuOpen"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </nav>
-    <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
-        <ul>
-          <li><a class="menu" (click)="inicio()">Inicio</a></li>
-          <li><a class="menu" (click)="servicios()">Servicios</a></li>
-          <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
-        </ul>
+
+    <!-- Menú desplegable (móvil) -->
+    <div class="desplegable" [class.active]="isMenuOpen">
+      <ul>
+        <li><a class="menu" (click)="inicio(); closeMenu()">Inicio</a></li>
+        <li><a class="menu" (click)="servicios(); closeMenu()">Servicios</a></li>
+        <li><a class="menu" (click)="proyectos(); closeMenu()">Proyectos</a></li>
+        <li><a class="menu" (click)="contacto(); closeMenu()">Contacto</a></li>
+      </ul>
     </div>
+
     <!-- Contenido principal -->
     <main class="content">
+
+      <!-- HERO / IMAGEN -->
       <section class="main-section">
         <div id="texto1">
           <div id="titulo">
             <h1>
-              <span *ngFor="let letra of letrasAnimadas" class="letra" [attr.data-letra]="letra">{{letra}}</span>
+              <span
+                *ngFor="let letra of letrasAnimadas"
+                class="letra"
+                [attr.data-letra]="letra"
+              >
+                {{ letra }}
+              </span>
             </h1>
           </div>
+
           <div id="contenido_introduccion">
-            <p>Soy desarrollador, especializado como Analista Programador, 
-              en constante crecimiento. Bienvenido a mi página web, 
-              donde encontrarás contenido sobre mis intereses y habilidades
-              en el mundo de la tecnología y ciencia. ¡Espero que disfrutes
-                tu estancia!</p>
+            <p>
+              Desarrollo aplicaciones web utilizando Angular y Django,
+              combinando programación, análisis de datos y diseño funcional.
+              En este portafolio encontrarás mis proyectos, habilidades técnicas
+              y mi crecimiento como desarrollador.
+            </p>
           </div>
         </div>
       </section>
 
-        <div id="opciones">
+      <!-- BLOQUES -->
+      <div id="opciones">
 
-          <div class="op" id="Habilidades">
-            <h2>Habilidades</h2>
-            <div class="contenedor-habilidades">
-                <h3>Lenguajes:</h3>
-                <div class="habilidad">Python</div>
-                <div class="habilidad">JavaScript</div>
-                <div class="habilidad">SQL</div>
-                <div class="habilidad">HTML & CSS (Aunque no es un lenguaje como tal)</div>
-                <div class="habilidad">Java</div>
-                <h3>Frameworks</h3>
-                <div>Django</div>
-                <div>Angular</div>
-                <h3>Aprendiendo...</h3>
-                <div>Machine Learning: Numpy, Pandas, Regrsión Lineal, Scikit-learn</div>
-                <div>Excel: Intermedio - Avanzado</div>
-            </div>
-          </div>
-          <div class="op">
-            <h2>Proyectos destacados</h2>
-            <h3>Sistema de gestión de servicios</h3>
-            <a href="https://github.com/TheN1c0/Arct_pro_gsi.git">Parte 1: Front-end  - cliente</a>
-            <br>
-            <a href="https://github.com/TheN1c0/Arct_pro_gsi_API.git">Parte 2: API - servidor</a>
-            
+        <!-- PERFIL TÉCNICO -->
+        <div class="op" id="Habilidades">
+          <h2>Perfil Técnico</h2>
 
-          </div>
-          <div class="op">
-            <h2>Investigación</h2>
-            <p>En este enlace subo Investigaciones personales,
-               basadas en bases de datos, con fuentes confiables, con el fin
-              de expandir mi conocimiento y ser más que solo un desarrollador.</p>
-              <a id="linkblog" (click)="blogs()">Blog</a>
-          </div>
+          <div class="contenedor-habilidades">
+            <h3>Lenguajes principales</h3>
+            <div class="habilidad">JavaScript / TypeScript</div>
+            <div class="habilidad">Python</div>
+            <div class="habilidad">SQL</div>
 
+            <h3>Frameworks</h3>
+            <div class="habilidad">Angular (Frontend)</div>
+            <div class="habilidad">Django REST (Backend)</div>
+
+            <h3>Herramientas</h3>
+            <div class="habilidad">Git + GitHub</div>
+            <div class="habilidad">Docker</div>
+            <div class="habilidad">AWS</div>
+            <div class="habilidad">Excel Intermedio–Avanzado</div>
+
+            <h3>En aprendizaje</h3>
+            <div class="habilidad">Machine Learning básico con Scikit-learn</div>
+          </div>
         </div>
-    
+
+        <!-- PROYECTOS -->
+        <div class="op" id="Proyectos">
+          <h2>Proyectos Destacados</h2>
+
+          <h3>Sistema de Gestión de Servicios</h3>
+          <p>
+            Aplicación full-stack desarrollada con Angular y una API REST,
+            enfocada en modularidad, arquitectura limpia y comunicación
+            cliente-servidor.
+          </p>
+
+          <a
+            href="https://github.com/TheN1c0/Arct_pro_gsi.git"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Frontend Angular
+          </a>
+
+          <br />
+
+          <a
+            href="https://github.com/TheN1c0/Arct_pro_gsi_API.git"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Backend API REST
+          </a>
+        </div>
+
+        <!-- ANÁLISIS / INVESTIGACIÓN -->
+        <div class="op" id="Investigacion">
+          <h2>Análisis e Investigación</h2>
+
+          <p>
+            Desarrollo análisis personales basados en datos para fortalecer mi perfil
+            técnico más allá del desarrollo web.
+          </p>
+
+          <div class="habilidad">EDA y análisis con Pandas</div>
+          <div class="habilidad">Dashboards y visualización</div>
+
+          <!-- Blog -->
+          <!-- <a id="linkblog" (click)="blogs()">Blog ()</a> -->
+        </div>
+
+      </div>
     </main>
   </div>
 </div>
