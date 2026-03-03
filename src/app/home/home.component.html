@@ -1,90 +1,207 @@
 <div class="body">
+  <div class="hero-middle" aria-hidden="true">
+    <svg class="hero-waves-svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
+      <path class="wave wave-1" fill="#EAE0CF"
+        d="M0,250L80,240C160,230,320,210,480,225C640,240,800,290,960,270C1120,250,1280,180,1360,145L1440,110L1440,400L1360,400C1280,400,1120,400,960,400C800,400,640,400,480,400C320,400,160,400,80,400L0,400Z">
+      </path>
+    </svg>
+  </div>
+
+  <div class="hero-bottom" aria-hidden="true">
+    <svg class="hero-waves-svg inverted" viewBox="0 0 1440 400" preserveAspectRatio="none">
+      <path class="wave wave-1" fill="#EAE0CF"
+        d="M0,250L80,240C160,230,320,210,480,225C640,240,800,290,960,270C1120,250,1280,180,1360,145L1440,110L1440,400L1360,400C1280,400,1120,400,960,400C800,400,640,400,480,400C320,400,160,400,80,400L0,400Z">
+      </path>
+      <path class="wave wave-2"
+        d="M0,280L80,260C160,240,320,200,480,215C640,230,800,295,960,290C1120,285,1280,210,1360,175L1440,140">
+      </path>
+      <path class="wave wave-3"
+        d="M0,320L80,310C160,300,320,280,480,260C640,240,800,225,960,235C1120,245,1280,280,1360,295L1440,310">
+      </path>
+    </svg>
+  </div>
+
   <div class="container">
 
-    
-    <!-- Barra superior -->
+    <!-- NAVBAR (estilo mockup) -->
     <nav class="navbar">
+      <div class="brand">
+        <div class="logo-box">
+          <!-- TODO: Insert logo later -->
+        </div>
+        <span class="brand-name">BRAVO-BYTES</span>
+      </div>
+
       <div class="menu-pc">
         <ul>
           <li><a class="menu" (click)="inicio()">Inicio</a></li>
           <li><a class="menu" (click)="servicios()">Servicios</a></li>
           <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
+          <li><a class="menu btn-cta" (click)="contacto()">Contáctanos</a></li>
         </ul>
-      </div>
-      <div class="menu-toggle"  (click)="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
       </div>
 
-      
+      <div class="menu-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </nav>
-    <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
-        <ul>
-          <li><a class="menu" (click)="inicio()">Inicio</a></li>
-          <li><a class="menu" (click)="servicios()">Servicios</a></li>
-          <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
-        </ul>
-    </div>
-    <!-- Contenido principal -->
-    <main class="content">
-      <section class="main-section">
-        <div id="texto1">
-          <div id="titulo">
-            <h1>
-              <span *ngFor="let letra of letrasAnimadas" class="letra" [attr.data-letra]="letra">{{letra}}</span>
-            </h1>
-          </div>
-          <div id="contenido_introduccion">
-            <p>Soy desarrollador, especializado como Analista Programador, 
-              en constante crecimiento. Bienvenido a mi página web, 
+
+    <!-- MENU MOBILE -->
+
+
+    <!-- TOP DARK SECTION (Hero + Waves) -->
+    <div class="top-dark-section">
+
+      <!-- HERO -->
+      <header class="hero" id="inicio">
+        <div class="hero-inner">
+
+          <!-- Izquierda: texto -->
+          <div class="hero-left">
+            <p class="hero-kicker">BRAVOBYTES</p>
+
+            <div id="titulo" class="hero-title">
+              <h1>
+                <span *ngFor="let letra of letrasAnimadas" class="letra" [attr.data-letra]="letra">{{ letra }}</span>
+              </h1>
+            </div>
+
+            <p class="hero-subtitle" id="contenido_introduccion">
+              Soy desarrollador, especializado como Analista Programador,
+              en constante crecimiento. Bienvenido a mi página web,
               donde encontrarás contenido sobre mis intereses y habilidades
-              en el mundo de la tecnología y ciencia. ¡Espero que disfrutes
-                tu estancia!</p>
+              en el mundo de la tecnología y ciencia.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" (click)="proyectos()">Ver Proyectos</a>
+              <a class="btn ghost" (click)="contacto()">Contactarme</a>
+            </div>
+          </div>
+
+          <!-- Derecha: espacio para ilustración (placeholder) -->
+          <div class="hero-right">
+            <div class="illustration-placeholder">
+              <div class="illus-badge">IMG / ILUSTRACIÓN</div>
+              <div class="illus-note">
+                Aquí después insertamos un SVG/PNG (cohete, dashboard, etc.)
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </header> <!-- END HERO -->
+
+    </div> <!-- END TOP DARK SECTION -->
+
+    <!-- MAIN MIDDLE SECTION (Beige) -->
+    <main class="content middle-beige-section">
+
+      <!-- TARJETAS (cuadros) tipo mockup -->
+      <section class="cards" id="servicios">
+        <!-- Card 1: Habilidades -->
+        <div class="card op" id="Habilidades">
+          <h2>Habilidades</h2>
+          <div class="contenedor-habilidades">
+            <h3>Lenguajes:</h3>
+            <div class="habilidad-stack">
+              <span class="habilidad badge">Python</span>
+              <span class="habilidad badge">JavaScript</span>
+              <span class="habilidad badge">SQL</span>
+              <span class="habilidad badge">HTML & CSS</span>
+              <span class="habilidad badge">Java</span>
+            </div>
+
+            <h3>Frameworks:</h3>
+            <div class="habilidad-stack">
+              <span class="badge">Django</span>
+              <span class="badge">Angular</span>
+            </div>
+
+            <h3>Aprendiendo...</h3>
+            <div class="habilidad-stack learning">
+              <span><strong>Machine Learning:</strong> Numpy, Pandas, Regresión Lineal, Scikit-learn</span>
+              <span><strong>Excel:</strong> Intermedio - Avanzado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Transformación IT</h3>
+          <p>Moderniza tus sistemas y procesos.</p>
+          <div class="card-media">
+            <span>ESPACIO IMG</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Soporte y Seguridad</h3>
+          <p>Protección y mantenimiento 24/7.</p>
+          <div class="card-media">
+            <span>ESPACIO IMG</span>
           </div>
         </div>
       </section>
 
-        <div id="opciones">
+      <!-- SECCIÓN PROYECTOS tipo mockup (con gran preview placeholder) -->
+      <section class="projects" id="proyectos">
+        <div class="section-title">
+          <h2>Nuestros Proyectos</h2>
+          <p>Soluciones que marcan la diferencia</p>
+        </div>
 
-          <div class="op" id="Habilidades">
-            <h2>Habilidades</h2>
-            <div class="contenedor-habilidades">
-                <h3>Lenguajes:</h3>
-                <div class="habilidad">Python</div>
-                <div class="habilidad">JavaScript</div>
-                <div class="habilidad">SQL</div>
-                <div class="habilidad">HTML & CSS (Aunque no es un lenguaje como tal)</div>
-                <div class="habilidad">Java</div>
-                <h3>Frameworks</h3>
-                <div>Django</div>
-                <div>Angular</div>
-                <h3>Aprendiendo...</h3>
-                <div>Machine Learning: Numpy, Pandas, Regrsión Lineal, Scikit-learn</div>
-                <div>Excel: Intermedio - Avanzado</div>
+        <div class="project-showcase">
+          <div class="project-preview">
+            <div class="preview-label">PREVIEW / MOCKUP</div>
+            <div class="preview-note">Aquí irá una imagen grande (dashboard / app / teléfono)</div>
+          </div>
+
+          <div class="project-links">
+            <h3>Proyectos destacados</h3>
+            <div class="link-box">
+              <h4>Sistema de gestión de servicios</h4>
+              <a href="https://github.com/TheN1c0/Arct_pro_gsi.git" target="_blank" rel="noreferrer">
+                Parte 1: Front-end — cliente
+              </a>
+              <a href="https://github.com/TheN1c0/Arct_pro_gsi_API.git" target="_blank" rel="noreferrer">
+                Parte 2: API — servidor
+              </a>
+            </div>
+
+            <div class="link-box">
+              <h4>Investigación</h4>
+              <p>
+                Publico investigaciones basadas en datos y fuentes confiables
+                para expandir mi conocimiento.
+              </p>
+              <a class="link-cta" id="linkblog" (click)="blogs()">Ir al Blog</a>
             </div>
           </div>
-          <div class="op">
-            <h2>Proyectos destacados</h2>
-            <h3>Sistema de gestión de servicios</h3>
-            <a href="https://github.com/TheN1c0/Arct_pro_gsi.git">Parte 1: Front-end  - cliente</a>
-            <br>
-            <a href="https://github.com/TheN1c0/Arct_pro_gsi_API.git">Parte 2: API - servidor</a>
-            
-
-          </div>
-          <div class="op">
-            <h2>Investigación</h2>
-            <p>En este enlace subo Investigaciones personales,
-               basadas en bases de datos, con fuentes confiables, con el fin
-              de expandir mi conocimiento y ser más que solo un desarrollador.</p>
-              <a id="linkblog" (click)="blogs()">Blog</a>
-          </div>
-
         </div>
-    
+      </section>
+
+      <!-- FOOTER (simple) -->
+      <footer class="footer" id="contacto">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="logo-box small">
+              <!-- Placeholder -->
+            </div>
+            <span>BRAVO-BYTES</span>
+          </div>
+
+          <div class="footer-links">
+            <a (click)="contacto()">Contacto</a>
+            <a (click)="servicios()">Servicios</a>
+            <a (click)="proyectos()">Proyectos</a>
+          </div>
+        </div>
+      </footer>
+
     </main>
   </div>
 </div>
