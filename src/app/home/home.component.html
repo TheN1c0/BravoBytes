@@ -1,4 +1,6 @@
 <div class="body">
+
+
   <div class="hero-middle" aria-hidden="true">
     <svg class="hero-waves-svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
       <path class="wave wave-1" fill="#EAE0CF"
@@ -37,7 +39,7 @@
           <li><a class="menu" (click)="inicio()">Inicio</a></li>
           <li><a class="menu" (click)="servicios()">Servicios</a></li>
           <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu btn-cta" (click)="contacto()">Contáctanos</a></li>
+          <li><a class="menu btn-cta" (click)="contacto()">Contáctame</a></li>
         </ul>
       </div>
 
@@ -53,6 +55,15 @@
 
     <!-- TOP DARK SECTION (Hero + Waves) -->
     <div class="top-dark-section">
+
+      <!-- HERO VIDEO BACKGROUND (Desktop Only) -->
+      <div class="hero-video-container desktop-only">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+          <!-- TODO: Ensure user adds "hero-bg.mp4" in the public/ folder -->
+          <source src="hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>
 
       <!-- HERO -->
       <header class="hero" id="inicio">
@@ -81,13 +92,10 @@
             </div>
           </div>
 
-          <!-- Derecha: espacio para ilustración (placeholder) -->
-          <div class="hero-right">
-            <div class="illustration-placeholder">
-              <div class="illus-badge">IMG / ILUSTRACIÓN</div>
-              <div class="illus-note">
-                Aquí después insertamos un SVG/PNG (cohete, dashboard, etc.)
-              </div>
+          <!-- Derecha: ilustración (Solo para móviles) -->
+          <div class="hero-right mobile-only">
+            <div class="hero-illustration">
+              <img src="imgrocket.svg" alt="BravoBytes Ilustración" class="hero-img">
             </div>
           </div>
 
@@ -150,15 +158,21 @@
       <!-- SECCIÓN PROYECTOS tipo mockup (con gran preview placeholder) -->
       <section class="projects" id="proyectos">
         <div class="section-title">
-          <h2>Nuestros Proyectos</h2>
+          <h2>Mis Proyectos</h2>
           <p>Soluciones que marcan la diferencia</p>
         </div>
 
         <div class="project-showcase">
-          <div class="project-preview">
-            <div class="preview-label">PREVIEW / MOCKUP</div>
-            <div class="preview-note">Aquí irá una imagen grande (dashboard / app / teléfono)</div>
-          </div>
+          <a href="https://rrhh.bravo-bytes.com/portal" target="_blank" rel="noreferrer"
+            class="project-preview hr-project">
+            <img src="imgrrhh.png" alt="Gestor de Recursos Humanos" class="project-preview-img">
+            <div class="project-preview-info">
+              <h3>Gestor de Recursos Humanos</h3>
+              <p>
+                Permite agregar empleados, generar liquidaciones de sueldo, y definir cargos de forma rápida y sencilla.
+              </p>
+            </div>
+          </a>
 
           <div class="project-links">
             <h3>Proyectos destacados</h3>
@@ -172,6 +186,7 @@
               </a>
             </div>
 
+            <!--
             <div class="link-box">
               <h4>Investigación</h4>
               <p>
@@ -180,6 +195,7 @@
               </p>
               <a class="link-cta" id="linkblog" (click)="blogs()">Ir al Blog</a>
             </div>
+            -->
           </div>
         </div>
       </section>

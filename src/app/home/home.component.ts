@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -49,6 +49,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       window.removeEventListener('scroll', this.onScroll);
     }
   }
+
+  @ViewChild('heroVideo') heroVideo!: ElementRef<HTMLVideoElement>;
 
   // Función flecha para mantener el contexto adecuado de 'this'
   onScroll = (): void => {
