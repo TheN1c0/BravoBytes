@@ -1,54 +1,54 @@
 <div class="body">
-  <div class="container">
+    <div class="container">
 
-      <!-- Barra superior -->
-      <nav class="navbar">
-          <div class="menu-pc">
-              <ul>
-                  <li><a class="menu" (click)="inicio()">Inicio</a></li>
-                  <li><a class="menu" (click)="servicios()">Servicios</a></li>
-                  <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-                  <li><a class="menu" (click)="contacto()">Contacto</a></li>
-              </ul>
-          </div>
-          <div class="menu-toggle" (click)="toggleMenu()">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-          </div>
-      </nav>
+        <!-- Barra superior -->
+        <nav class="navbar">
+            <div class="menu-pc">
+                <ul>
+                    <li><a class="menu" (click)="inicio()">Inicio</a></li>
+                    <li><a class="menu" (click)="servicios()">Servicios</a></li>
+                    <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+                    <li><a class="menu" (click)="contacto()">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="menu-toggle" (click)="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
 
-      <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
-          <ul>
-              <li><a class="menu" (click)="inicio()">Inicio</a></li>
-              <li><a class="menu" (click)="servicios()">Servicios</a></li>
-              <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-              <li><a class="menu" (click)="contacto()">Contacto</a></li>
-          </ul>
-      </div>
-
-      <!-- Contenido principal -->
-      <main class="content">
-        <div id="titulo-proyectos">
-        <h1>¡Haz clic en los proyectos que deseas ver!</h1>
+        <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
+            <ul>
+                <li><a class="menu" (click)="inicio()">Inicio</a></li>
+                <li><a class="menu" (click)="servicios()">Servicios</a></li>
+                <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+                <li><a class="menu" (click)="contacto()">Contacto</a></li>
+            </ul>
         </div>
-        <div class="proyectos-container">
-            <div *ngFor="let proyecto of listaProyectos; let i = index" class="proyecto" (click)="toggleExpand(i)">
-                <h3 class="titulo-proyecto">
-                    {{ proyecto.titulo }}
-                </h3>
-    
-                <div *ngIf="expandedIndex === i" class="contenido-proyecto">
-                    <div *ngFor="let item of proyecto.contenido">
-                        <p>{{ item.descripcion }}</p>
-                        <img [src]="item.imagen" alt="Imagen del proyecto" class="imagen-proyecto">
+
+        <!-- Contenido principal -->
+        <main class="content">
+            <div id="titulo-proyectos">
+                <h1>¡Haz clic en los proyectos que deseas ver!</h1>
+            </div>
+            <div class="proyectos-container">
+                <div *ngFor="let proyecto of listaProyectos; let i = index" class="proyecto" (click)="toggleExpand(i)">
+                    <h3 class="titulo-proyecto">
+                        {{ proyecto.titulo }}
+                    </h3>
+
+                    <div *ngIf="expandedIndex === i" class="contenido-proyecto">
+                        <div *ngFor="let item of proyecto.contenido">
+                            <p>{{ item.descripcion }}</p>
+                            <img [src]="item.imagen" alt="Imagen del proyecto" class="imagen-proyecto">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    
-        <h3>Próximamente habrá más proyectos...</h3>
-    </main>
-    
-  </div>
+
+            <h3>Próximamente habrá más proyectos...</h3>
+        </main>
+
+    </div>
 </div>

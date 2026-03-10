@@ -1,54 +1,54 @@
 <div class="body">
-    <div class="container">
-  
-      
-      <!-- Barra superior -->
-      <nav class="navbar">
-        <div class="menu-pc">
-          <ul>
-            <li><a class="menu" (click)="inicio()">Inicio</a></li>
-            <li><a class="menu" (click)="servicios()">Servicios</a></li>
-            <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-            <li><a class="menu" (click)="contacto()" >Contacto</a></li>
-          </ul>
-        </div>
-        <div class="menu-toggle"  (click)="toggleMenu()">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-  
-        
-      </nav>
-      <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
+  <div class="container">
+
+
+    <!-- Barra superior -->
+    <nav class="navbar">
+      <div class="menu-pc">
         <ul>
           <li><a class="menu" (click)="inicio()">Inicio</a></li>
           <li><a class="menu" (click)="servicios()">Servicios</a></li>
           <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu" (click)="contacto()" >Contacto</a></li>
+          <li><a class="menu" (click)="contacto()">Contacto</a></li>
         </ul>
       </div>
-      <!-- Contenido principal -->
-      <main class="content">
-        <h1>Contactame</h1>
-        <div id="contactos">
-          <p>
-              Correo: <br>nico01062000&#64;gmail.com 
-          </p>
-          <p>
-              Linkedin: 
-              <a href="https://www.linkedin.com/in/nicolasbravoguzmananalistaprogramador/" target="_blank" rel="noopener noreferrer">
-                  <br><img id="img-linkedin" [src]="imagenlinkedin" alt="Mi Portafolio">
-              </a>
-          </p>
-          <p>
-              GitHub: 
-              <br><a href="https://github.com/TheN1c0" target="_blank" rel="noopener noreferrer">
-                  <img id="img-linkedin" [src]="imagengithub" alt="IMAGEN GitHub">
-              </a>
-          </p>
+      <div class="menu-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
-      </main>
+
+
+    </nav>
+    <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
+      <ul>
+        <li><a class="menu" (click)="inicio()">Inicio</a></li>
+        <li><a class="menu" (click)="servicios()">Servicios</a></li>
+        <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+        <li><a class="menu" (click)="contacto()">Contacto</a></li>
+      </ul>
     </div>
+    <!-- Contenido principal -->
+    <main class="content">
+      <h1>Contactame</h1>
+      <div id="contactos">
+        <p>
+          Correo: <br>nico01062000&#64;gmail.com
+        </p>
+        <p>
+          Linkedin:
+          <a href="https://www.linkedin.com/in/nicolasbravoguzmananalistaprogramador/" target="_blank"
+            rel="noopener noreferrer">
+            <br><img id="img-linkedin" [src]="imagenlinkedin" alt="Mi Portafolio">
+          </a>
+        </p>
+        <p>
+          GitHub:
+          <br><a href="https://github.com/TheN1c0" target="_blank" rel="noopener noreferrer">
+            <img id="img-linkedin" [src]="imagengithub" alt="IMAGEN GitHub">
+          </a>
+        </p>
+      </div>
+    </main>
   </div>
-  
+</div>
