@@ -1,0 +1,35 @@
+/* FOOTER */
+.footer {
+    background: #111C29;
+    color: #EAE0CF;
+    padding: 48px 0 48px;
+    position: relative;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    color: #EAE0CF;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-links a {
+    cursor: pointer;
+    color: rgba(234, 224, 207, .75);
+    text-decoration: none;
+    font-weight: 700;
+}

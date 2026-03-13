@@ -1,63 +1,9 @@
 <div class="body">
 
-  <div class="hero-container">
 
-    <div class="hero-top" aria-hidden="true">
-      <svg class="hero-waves-svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
-        <path class="wave wave-1" fill="#EAE0CF"
-          d="M0,250L80,240C160,230,320,210,480,225C640,240,800,290,960,270C1120,250,1280,180,1360,145L1440,110L1440,400L1360,400C1280,400,1120,400,960,400C800,400,640,400,480,400C320,400,160,400,80,400L0,400Z">
-        </path>
-      </svg>
-    </div>
-
-    <div class="hero-middle" aria-hidden="true">
-      <!-- <svg class="hero-waves-svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
-        <path class="wave wave-1" fill="#EAE0CF"
-          d="M0,250L80,240C160,230,320,210,480,225C640,240,800,290,960,270C1120,250,1280,180,1360,145L1440,110L1440,400L1360,400C1280,400,1120,400,960,400C800,400,640,400,480,400C320,400,160,400,80,400L0,400Z">
-        </path>
-      </svg> -->
-    </div>
-
-    <div class="hero-bottom" aria-hidden="true">
-      <svg class="hero-waves-svg inverted" viewBox="0 0 1440 400" preserveAspectRatio="none">
-        <path class="wave wave-1" fill="#EAE0CF"
-          d="M0,250L80,240C160,230,320,210,480,225C640,240,800,290,960,270C1120,250,1280,180,1360,145L1440,110L1440,400L1360,400C1280,400,1120,400,960,400C800,400,640,400,480,400C320,400,160,400,80,400L0,400Z">
-        </path>
-        <path class="wave wave-2"
-          d="M0,280L80,260C160,240,320,200,480,215C640,230,800,295,960,290C1120,285,1280,210,1360,175L1440,140">
-        </path>
-        <path class="wave wave-3"
-          d="M0,320L80,310C160,300,320,280,480,260C640,240,800,225,960,235C1120,245,1280,280,1360,295L1440,310">
-        </path>
-      </svg>
-    </div>
-  </div>
   <div class="container">
 
-    <!-- NAVBAR (estilo mockup) -->
-    <nav class="navbar">
-      <div class="brand">
-        <div class="logo-box">
-          <!-- TODO: Insert logo later -->
-        </div>
-        <span class="brand-name">BRAVO-BYTES</span>
-      </div>
-
-      <div class="menu-pc">
-        <ul>
-          <li><a class="menu" (click)="inicio()">Inicio</a></li>
-          <li><a class="menu" (click)="servicios()">Servicios</a></li>
-          <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-          <li><a class="menu btn-cta" (click)="contacto()">Contáctame</a></li>
-        </ul>
-      </div>
-
-      <div class="menu-toggle" (click)="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </nav>
+    <app-navbar></app-navbar>
 
     <!-- MENU MOBILE -->
 
@@ -118,8 +64,117 @@
     <!-- MAIN MIDDLE SECTION (Beige) -->
     <main class="content middle-beige-section">
 
+      <!-- SECCIÓN PROYECTOS tipo mockup (con gran preview placeholder) -->
+      <section class="projects" id="proyectos">
+        <div class="section-title">
+          <h2>Mis Proyectos</h2>
+          <p>Soluciones que marcan la diferencia</p>
+        </div>
+
+        <swiper-container class="projects-carousel" loop="true" slides-per-view="auto" space-between="24"
+          autoplay-delay="4500" autoplay-disable-on-interaction="false" autoplay-pause-on-mouse-enter="true"
+          navigation="true" pagination="true" pagination-clickable="true">
+
+          <!-- Proyecto 1 (Existente) -->
+          <swiper-slide>
+            <a href="https://rrhh.bravo-bytes.com/portal" target="_blank" rel="noreferrer"
+              class="project-preview hr-project">
+              <img src="imgrrhh.png" alt="Gestor de Recursos Humanos" class="project-preview-img">
+              <div class="project-preview-info">
+                <h3>Gestor de Recursos Humanos</h3>
+                <p>
+                  Permite agregar empleados, generar liquidaciones de sueldo, y definir cargos de forma rápida y
+                  sencilla.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Proyecto 2 (Placeholder) -->
+          <swiper-slide>
+            <a href="#" class="project-preview hr-project">
+              <!-- Usamos un placeholder genérico o div vacío si no hay imagen -->
+              <div class="project-preview-img"
+                style="background: rgba(148, 180, 193, 0.15); display: grid; place-items: center; border: 1px dashed rgba(234, 224, 207, 0.22);">
+                <span style="color: rgba(234, 224, 207, 0.5); font-weight: 600;">Próximamente</span>
+              </div>
+              <div class="project-preview-info">
+                <h3>Proyecto en Desarrollo 1</h3>
+                <p>
+                  Una nueva solución tecnológica que pronto formará parte de este portafolio.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Proyecto 3 (Placeholder) -->
+          <swiper-slide>
+            <a href="#" class="project-preview hr-project">
+              <div class="project-preview-img"
+                style="background: rgba(148, 180, 193, 0.15); display: grid; place-items: center; border: 1px dashed rgba(234, 224, 207, 0.22);">
+                <span style="color: rgba(234, 224, 207, 0.5); font-weight: 600;">Próximamente</span>
+              </div>
+              <div class="project-preview-info">
+                <h3>Proyecto en Desarrollo 2</h3>
+                <p>
+                  Una nueva solución tecnológica que pronto formará parte de este portafolio.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Duplicado 1 -->
+          <swiper-slide>
+            <a href="https://rrhh.bravo-bytes.com/portal" target="_blank" rel="noreferrer"
+              class="project-preview hr-project">
+              <img src="imgrrhh.png" alt="Gestor de Recursos Humanos" class="project-preview-img">
+              <div class="project-preview-info">
+                <h3>Gestor de Recursos Humanos</h3>
+                <p>
+                  Permite agregar empleados, generar liquidaciones de sueldo, y definir cargos de forma rápida y
+                  sencilla.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Duplicado 2 -->
+          <swiper-slide>
+            <a href="#" class="project-preview hr-project">
+              <div class="project-preview-img"
+                style="background: rgba(148, 180, 193, 0.15); display: grid; place-items: center; border: 1px dashed rgba(234, 224, 207, 0.22);">
+                <span style="color: rgba(234, 224, 207, 0.5); font-weight: 600;">Próximamente</span>
+              </div>
+              <div class="project-preview-info">
+                <h3>Proyecto en Desarrollo 3</h3>
+                <p>
+                  Una nueva solución tecnológica que pronto formará parte de este portafolio.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Duplicado 3 -->
+          <swiper-slide>
+            <a href="#" class="project-preview hr-project">
+              <div class="project-preview-img"
+                style="background: rgba(148, 180, 193, 0.15); display: grid; place-items: center; border: 1px dashed rgba(234, 224, 207, 0.22);">
+                <span style="color: rgba(234, 224, 207, 0.5); font-weight: 600;">Próximamente</span>
+              </div>
+              <div class="project-preview-info">
+                <h3>Proyecto en Desarrollo 4</h3>
+                <p>
+                  Una nueva solución tecnológica que pronto formará parte de este portafolio.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+        </swiper-container>
+      </section>
+
       <!-- TARJETAS (cuadros) tipo mockup -->
-      <section class="cards" id="servicios">
+      <section class="cards" id="habilidades-section">
         <!-- Card 1: Habilidades -->
         <div class="card op" id="Habilidades">
           <h2>Habilidades</h2>
@@ -163,69 +218,8 @@
           </div>
         </div>
       </section>
-
-      <!-- SECCIÓN PROYECTOS tipo mockup (con gran preview placeholder) -->
-      <section class="projects" id="proyectos">
-        <div class="section-title">
-          <h2>Mis Proyectos</h2>
-          <p>Soluciones que marcan la diferencia</p>
-        </div>
-
-        <div class="project-showcase">
-          <a href="https://rrhh.bravo-bytes.com/portal" target="_blank" rel="noreferrer"
-            class="project-preview hr-project">
-            <img src="imgrrhh.png" alt="Gestor de Recursos Humanos" class="project-preview-img">
-            <div class="project-preview-info">
-              <h3>Gestor de Recursos Humanos</h3>
-              <p>
-                Permite agregar empleados, generar liquidaciones de sueldo, y definir cargos de forma rápida y sencilla.
-              </p>
-            </div>
-          </a>
-
-          <div class="project-links">
-            <h3>Proyectos destacados</h3>
-            <div class="link-box">
-              <h4>Sistema de gestión de servicios</h4>
-              <a href="https://github.com/TheN1c0/Arct_pro_gsi.git" target="_blank" rel="noreferrer">
-                Parte 1: Front-end — cliente
-              </a>
-              <a href="https://github.com/TheN1c0/Arct_pro_gsi_API.git" target="_blank" rel="noreferrer">
-                Parte 2: API — servidor
-              </a>
-            </div>
-
-            <!--
-            <div class="link-box">
-              <h4>Investigación</h4>
-              <p>
-                Publico investigaciones basadas en datos y fuentes confiables
-                para expandir mi conocimiento.
-              </p>
-              <a class="link-cta" id="linkblog" (click)="blogs()">Ir al Blog</a>
-            </div>
-            -->
-          </div>
-        </div>
-      </section>
-
-      <!-- FOOTER (simple) -->
-      <footer class="footer" id="contacto">
-        <div class="footer-inner">
-          <div class="footer-brand">
-            <div class="logo-box small">
-              <!-- Placeholder -->
-            </div>
-            <span>BRAVO-BYTES</span>
-          </div>
-
-          <div class="footer-links">
-            <a (click)="contacto()">Contacto</a>
-            <a (click)="servicios()">Servicios</a>
-            <a (click)="proyectos()">Proyectos</a>
-          </div>
-        </div>
-      </footer>
+      <!--  -->
+      <app-footer></app-footer>
 
     </main>
   </div>

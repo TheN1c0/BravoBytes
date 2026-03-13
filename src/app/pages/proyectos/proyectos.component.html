@@ -1,53 +1,89 @@
 <div class="body">
     <div class="container">
 
-        <!-- Barra superior -->
-        <nav class="navbar">
-            <div class="menu-pc">
-                <ul>
-                    <li><a class="menu" (click)="inicio()">Inicio</a></li>
-                    <li><a class="menu" (click)="servicios()">Servicios</a></li>
-                    <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-                    <li><a class="menu" (click)="contacto()">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="menu-toggle" (click)="toggleMenu()">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-
-        <div class="desplegable" [ngClass]="{ 'active': isMenuOpen }">
-            <ul>
-                <li><a class="menu" (click)="inicio()">Inicio</a></li>
-                <li><a class="menu" (click)="servicios()">Servicios</a></li>
-                <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-                <li><a class="menu" (click)="contacto()">Contacto</a></li>
-            </ul>
-        </div>
+        <app-navbar></app-navbar>
 
         <!-- Contenido principal -->
         <main class="content">
-            <div id="titulo-proyectos">
-                <h1>¡Haz clic en los proyectos que deseas ver!</h1>
+            <div class="titulo-seccion">
+                <h1>Mis Proyectos</h1>
+                <p class="subtitulo">Soluciones que marcan la diferencia</p>
             </div>
-            <div class="proyectos-container">
-                <div *ngFor="let proyecto of listaProyectos; let i = index" class="proyecto" (click)="toggleExpand(i)">
-                    <h3 class="titulo-proyecto">
-                        {{ proyecto.titulo }}
-                    </h3>
-
-                    <div *ngIf="expandedIndex === i" class="contenido-proyecto">
-                        <div *ngFor="let item of proyecto.contenido">
-                            <p>{{ item.descripcion }}</p>
-                            <img [src]="item.imagen" alt="Imagen del proyecto" class="imagen-proyecto">
+            <!-- Projects Grid Layout -->
+            <div class="proyectos-grid">
+                <div *ngFor="let proyecto of listaProyectos" class="proyecto-card">
+                    <div class="card-content">
+                        <h3 class="card-title">{{ proyecto.titulo }}</h3>
+                        <p class="card-desc">{{ proyecto.descripcionCorta }}</p>
+                        
+                        <!-- Main Project Image -->
+                        <div class="card-img-container">
+                            <img [src]="proyecto.imagenCard" [alt]="proyecto.titulo" class="card-img">
                         </div>
+                        
+                        <!-- Technology Badges -->
+                        <div class="tech-stack">
+                            <span *ngFor="let tech of proyecto.tecnologias" class="tech-badge">
+                                <i class="icon-{{ tech.toLowerCase() }}"></i> {{ tech }}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="card-actions">
+                        <button class="btn ghost btn-detalles" (click)="abrirModal(proyecto)">Ver Detalles</button>
                     </div>
                 </div>
             </div>
 
-            <h3>Próximamente habrá más proyectos...</h3>
+            <!-- Project Details Modal -->
+            <div class="modal-overlay" *ngIf="proyectoSeleccionado" (click)="cerrarModal()">
+                <div class="modal-content" (click)="$event.stopPropagation()">
+                    
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button class="btn-volver" (click)="cerrarModal()">
+                            <mat-icon>arrow_back</mat-icon> Volver
+                        </button>
+                        <button class="btn-cerrar" (click)="cerrarModal()">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                    
+                    <!-- Modal Body: Image Gallery -->
+                    <div class="modal-gallery">
+                        <div class="gallery-scroll">
+                           <img *ngFor="let img of proyectoSeleccionado.imagenDetalle" [src]="img" alt="Project detail">
+                        </div>
+                    </div>
+                    
+                    <!-- Modal Body: Info -->
+                    <div class="modal-info">
+                        <h2>{{ proyectoSeleccionado.titulo }}</h2>
+                        <p class="descripcion-larga">{{ proyectoSeleccionado.descripcionLarga }}</p>
+                        
+                        <ul class="caracteristicas-list" *ngIf="proyectoSeleccionado.caracteristicas?.length">
+                            <li *ngFor="let feat of proyectoSeleccionado.caracteristicas">{{ feat }}</li>
+                        </ul>
+                        
+                        <div class="tech-stack modal-tech">
+                            <span *ngFor="let tech of proyectoSeleccionado.tecnologias" class="tech-badge">
+                                {{ tech }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Modal Footer Actions -->
+                    <div class="modal-actions">
+                        <a *ngIf="proyectoSeleccionado.linkSitio" [href]="proyectoSeleccionado.linkSitio" target="_blank" class="btn primary btn-visitar">
+                            <mat-icon>language</mat-icon> Visitar Sitio
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <h3 class="proximamente-text">Próximamente habrá más proyectos...</h3>
         </main>
 
     </div>

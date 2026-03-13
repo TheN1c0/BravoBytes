@@ -1,19 +1,24 @@
-import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Renderer2, Inject, PLATFORM_ID, ElementRef, CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Meta } from '@angular/platform-browser';
+import { NavbarComponent } from '../layout/navbar/navbar.component';
+import { FooterComponent } from '../layout/footer/footer.component';
+import { register } from 'swiper/element/bundle';
+
+register(); // Register Swiper web components
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],  // Asegúrate de incluir CommonModule aquí
+  imports: [CommonModule, NavbarComponent, FooterComponent],  // Asegúrate de incluir CommonModule aquí
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   
-  isMenuOpen = false;
   constructor(
     private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -79,25 +84,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     }, 200); 
   }
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
   contacto(){
     this.router.navigate(['/contacto']);
-  }
-  blogs(){
-    this.router.navigate(['/blogs']);
   }
   proyectos(){
     this.router.navigate(['/proyectos']);
   }
-  servicios(){
-    this.router.navigate(['/servicios']);
-  }
-  inicio(){
-    this.router.navigate(['/home']);
-  }
-
 
 }

@@ -5,79 +5,78 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
+
+export interface Proyecto {
+  titulo: string;
+  descripcionCorta: string; // Used in the card
+  descripcionLarga: string; // Used in the modal
+  imagenCard: string;
+  imagenDetalle: string[]; // List of images for the modal
+  caracteristicas: string[]; // Bullet points for the modal
+  tecnologias: string[]; // E.g., ['Python', 'React', 'AWS']
+  linkSitio?: string;
+}
+
 @Component({
   selector: 'app-proyectos',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatExpansionModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, NavbarComponent],
   templateUrl: './proyectos.component.html',
   styleUrl: './proyectos.component.scss',
 })
 export class ProyectosComponent {
-  isMenuOpen = false;
-  imagen1: string = 'proyectosimg/inicio.png'; 
-
-  listaProyectos: any[] = []; 
+  // Removed menu attribute
+  listaProyectos: Proyecto[] = []; 
+  proyectoSeleccionado: Proyecto | null = null;
+  imagen1: string = 'proyectosimg/inicio.png';
 
   constructor(private router: Router) {
     this.inicializarListaProyectos(); 
   }
 
-  
   inicializarListaProyectos() {
     this.listaProyectos = [
       {
         titulo: 'Sistema de Administración de Inventario (Stock Master)',
-        contenido: [
-          {
-            descripcion:
-              'Stock Master es un sistema de gestión de inventario diseñado para optimizar el control de productos. Cuenta con autenticación mediante contraseña, distintos tipos de usuario y recuperación de credenciales, garantizando seguridad y accesibilidad para los administradores.',
-            imagen: this.imagen1, 
-          },
-          {
-            descripcion: 'Arquitectura Cliente-Servidor: El sistema está compuesto por dos aplicaciones, una para el cliente (Frontend) y otra como servidor API (Backend). Esto permite administrar productos desde cualquier ubicación sin consumir espacio en disco ni requerir copias de seguridad manuales, ya que toda la información se almacena en el servidor. Además, es posible actualizar la interfaz o modificar el inventario sin interrumpir el funcionamiento del otro componente.',
-            imagen: 'proyectosimg/codigo_server.png',
-          },
-          {
-            descripcion: 'El sistema proporciona al administrador herramientas avanzadas para la gestión de inventario. Permite editar las características de cualquier producto, agregar o reducir stock según sea necesario y administrar los permisos de usuario. Además, es posible crear nuevos roles personalizados según los requerimientos del negocio.',
-            imagen: 'proyectosimg/editar_ctrl_stock_admin.png',
-          },
-          {
-            descripcion: 'El sistema también permite la gestión de pedidos, actualizando automáticamente el stock según si los productos son enviados o recibidos. Como futuras mejoras, se plantea la implementación de monitoreo de inventario, estadísticas de productos más consumidos, cálculo de ganancias y más. Este sistema ha sido desarrollado utilizando Django, un framework basado en Python.',
-            imagen: 'proyectosimg/pedido_ctrl_stock_admin_2.png',
-          },          
+        descripcionCorta: 'Sistema de gestión de inventario para optimizar el control de productos con autenticación y roles.',
+        descripcionLarga: 'Stock Master es un sistema integral de gestión de inventario. Está compuesto por una arquitectura Cliente-Servidor (Frontend y Backend API) que permite administrar productos desde cualquier ubicación sin consumir espacio en disco local. Proporciona herramientas avanzadas para editar características, gestionar stock, procesar pedidos y administrar permisos de usuario de forma segura.',
+        imagenCard: this.imagen1,
+        imagenDetalle: [
+          this.imagen1,
+          'proyectosimg/codigo_server.png',
+          'proyectosimg/editar_ctrl_stock_admin.png',
+          'proyectosimg/pedido_ctrl_stock_admin_2.png'
         ],
+        caracteristicas: [
+          'Autenticación mediante contraseña y recuperación de credenciales',
+          'Arquitectura Cliente-Servidor independiente',
+          'Gestión completa de CRUD para inventario',
+          'Actualización automática de stock al procesar envíos y recepciones',
+          'Roles de usuario personalizables y permisos granulares'
+        ],
+        tecnologias: ['Python', 'Django', 'SQLite', 'HTML/CSS/JS'], // Reemplaza con las que uses realmente
+        // linkSitio: 'https://tu-sitio.com' si lo tuvieras
       },
     ];
   }
 
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+  abrirModal(proyecto: Proyecto) {
+    this.proyectoSeleccionado = proyecto;
+    // Prevenir scroll en el body cuando el modal está abierto
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    }
   }
 
-  contacto() {
-    this.router.navigate(['/contacto']);
+  cerrarModal() {
+    this.proyectoSeleccionado = null;
+    // Restaurar scroll
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'auto';
+    }
   }
 
-  blogs() {
-    this.router.navigate(['/blogs']);
-  }
 
-  proyectos() {
-    this.router.navigate(['/proyectos']);
-  }
 
-  servicios() {
-    this.router.navigate(['/servicios']);
-  }
-
-  inicio() {
-    this.router.navigate(['/']);
-  }
-
-  expandedIndex: number = -1;
-
-  toggleExpand(index: number): void {
-    this.expandedIndex = this.expandedIndex === index ? -1 : index;
-  }
 }

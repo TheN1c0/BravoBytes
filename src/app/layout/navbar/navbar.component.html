@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <div class="brand">
+        <div class="logo-box">
+            <!-- TODO: Insert logo later -->
+        </div>
+        <span class="brand-name">BRAVO-BYTES</span>
+    </div>
+
+    <div class="menu-pc">
+        <ul>
+            <li><a class="menu" (click)="inicio()">Inicio</a></li>
+            <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
+            <li><a class="menu btn-cta" (click)="contacto()">Contáctame</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</nav>

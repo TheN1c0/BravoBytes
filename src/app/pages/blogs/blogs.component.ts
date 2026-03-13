@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [CommonModule],  //
+  imports: [CommonModule, NavbarComponent],  //
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss']
 })
@@ -13,29 +14,6 @@ import { Router } from '@angular/router';
 
 
 export class BlogsComponent {
-  isMenuOpen = false;
-
-  constructor(  
-      private router: Router
-    ) {}
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-  contacto(){
-    this.router.navigate(['/contacto']);
-  }
-  blogs(){
-    this.router.navigate(['/blogs']);
-  }
-  proyectos(){
-    this.router.navigate(['/proyectos']);
-  }
-  servicios(){
-    this.router.navigate(['/servicios']);
-  }
-  inicio(){
-    this.router.navigate(['/']);
-  }
+  constructor() {}
 }
 
