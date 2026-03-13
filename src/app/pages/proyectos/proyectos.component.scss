@@ -16,7 +16,7 @@
 .content {
   width: min(1200px, 92%);
   margin: 0 auto;
-  padding: 80px 0 60px; /* Reduced back down so it sits on the dark top wave */
+  padding: 40px 0 60px; /* Reduced to bring title closer to navbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,8 +140,8 @@ h3.proximamente-text {
 
 .tech-badge {
   background: rgba(148, 180, 193, 0.15);
-  color: rgba(234, 224, 207, 0.9);
-  padding: 6px 12px;
+  color: #EAE0CF;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 500;
@@ -149,6 +149,13 @@ h3.proximamente-text {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  
+  /* Stying for the devicon SVGs */
+  .tech-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
 }
 
 .card-actions {
@@ -246,38 +253,81 @@ h3.proximamente-text {
   padding: 4px;
 }
 
-/* Modal Gallery Area (Simulating second mockup background area) */
+/* Modal Gallery Slider Area */
 .modal-gallery {
   background: #152230; /* Slightly darker behind the images */
   padding: 30px;
-  max-height: 350px;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
-.gallery-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  
-  /* Scrollbar hiding for cleaner look */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(234, 224, 207, 0.2) transparent;
-  
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(234, 224, 207, 0.2);
-    border-radius: 10px;
-  }
-}
-
-.gallery-scroll img {
-  height: 250px;
+.slider-container {
+  width: 100%;
+  max-width: 800px; /* Adjusted to fit the modal nicely */
+  height: 350px;
+  overflow: hidden;
+  margin: 0 auto;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  object-fit: cover;
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    
+    /* Dynamic widths and animations based on number of images */
+    &.slide-count-1 { width: 100%; }
+    &.slide-count-2 { width: 200%; animation: slide2 10s infinite ease-in-out; }
+    &.slide-count-3 { width: 300%; animation: slide3 15s infinite ease-in-out; }
+    &.slide-count-4 { width: 400%; animation: slide4 20s infinite ease-in-out; }
+    &.slide-count-5 { width: 500%; animation: slide5 25s infinite ease-in-out; }
+
+    /* Pause animation on hover for better user experience */
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  li {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from 'cover' to 'contain' to show the whole image without cropping */
+    background: #0f1823; /* Dark background to fill any letterboxing space */
+  }
+}
+
+/* Keyframes for different slide counts */
+@keyframes slide2 {
+  0%, 40% { margin-left: 0; }
+  50%, 90% { margin-left: -100%; }
+  100% { margin-left: 0; }
+}
+@keyframes slide3 {
+  0%, 25% { margin-left: 0; }
+  33%, 58% { margin-left: -100%; }
+  66%, 91% { margin-left: -200%; }
+  100% { margin-left: 0; }
+}
+@keyframes slide4 {
+  0%, 20% { margin-left: 0; }
+  25%, 45% { margin-left: -100%; }
+  50%, 70% { margin-left: -200%; }
+  75%, 95% { margin-left: -300%; }
+  100% { margin-left: 0; }
+}
+@keyframes slide5 {
+  0%, 15% { margin-left: 0; }
+  20%, 35% { margin-left: -100%; }
+  40%, 55% { margin-left: -200%; }
+  60%, 75% { margin-left: -300%; }
+  80%, 95% { margin-left: -400%; }
+  100% { margin-left: 0; }
 }
 
 /* Modal Info Text */
@@ -361,11 +411,28 @@ h3.proximamente-text {
     padding-right: 20px;
   }
   
-  .gallery-scroll img {
-    height: 180px;
+  .slider-container {
+    height: 200px;
   }
   
   .proyectos-grid {
     grid-template-columns: 1fr; /* Full width on small screens */
+  }
+
+  .titulo-seccion {
+    background: #213448; /* Dark blue background card */
+    border-radius: 16px;
+    padding: 24px 16px;
+    margin: 0 16px 30px;
+    border: 1px solid rgba(234, 224, 207, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    
+    h1 {
+      font-size: clamp(28px, 6vw, 36px);
+      
+      &::before, &::after {
+        display: none; /* Simplify title for mobile inside the box */
+      }
+    }
   }
 }

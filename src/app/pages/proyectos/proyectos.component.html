@@ -24,7 +24,7 @@
                         <!-- Technology Badges -->
                         <div class="tech-stack">
                             <span *ngFor="let tech of proyecto.tecnologias" class="tech-badge">
-                                <i class="icon-{{ tech.toLowerCase() }}"></i> {{ tech }}
+                                <img [src]="tech.icono" [alt]="tech.nombre" class="tech-icon"> {{ tech.nombre }}
                             </span>
                         </div>
                     </div>
@@ -50,10 +50,14 @@
                         </button>
                     </div>
                     
-                    <!-- Modal Body: Image Gallery -->
+                    <!-- Modal Body: Image Gallery Slider -->
                     <div class="modal-gallery">
-                        <div class="gallery-scroll">
-                           <img *ngFor="let img of proyectoSeleccionado.imagenDetalle" [src]="img" alt="Project detail">
+                        <div class="slider-container">
+                           <ul [ngClass]="'slide-count-' + proyectoSeleccionado.imagenDetalle.length">
+                             <li *ngFor="let img of proyectoSeleccionado.imagenDetalle">
+                               <img [src]="img" alt="Project detail">
+                             </li>
+                           </ul>
                         </div>
                     </div>
                     
@@ -68,7 +72,7 @@
                         
                         <div class="tech-stack modal-tech">
                             <span *ngFor="let tech of proyectoSeleccionado.tecnologias" class="tech-badge">
-                                {{ tech }}
+                                <img [src]="tech.icono" [alt]="tech.nombre" class="tech-icon"> {{ tech.nombre }}
                             </span>
                         </div>
                     </div>

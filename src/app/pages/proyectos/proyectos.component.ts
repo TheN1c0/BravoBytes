@@ -14,7 +14,7 @@ export interface Proyecto {
   imagenCard: string;
   imagenDetalle: string[]; // List of images for the modal
   caracteristicas: string[]; // Bullet points for the modal
-  tecnologias: string[]; // E.g., ['Python', 'React', 'AWS']
+  tecnologias: { nombre: string; icono: string }[]; // E.g., {nombre: 'Python', icono: 'url...'}
   linkSitio?: string;
 }
 
@@ -55,9 +55,43 @@ export class ProyectosComponent {
           'Actualización automática de stock al procesar envíos y recepciones',
           'Roles de usuario personalizables y permisos granulares'
         ],
-        tecnologias: ['Python', 'Django', 'SQLite', 'HTML/CSS/JS'], // Reemplaza con las que uses realmente
+        tecnologias: [
+          { nombre: 'Python', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+          { nombre: 'Django', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg' },
+          { nombre: 'SQLite', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
+          { nombre: 'HTML5', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+          { nombre: 'CSS3', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+          { nombre: 'JavaScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' }
+        ],
         // linkSitio: 'https://tu-sitio.com' si lo tuvieras
       },
+      {
+        titulo: 'Go Gestión de Recursos Humanos (GGRRHH)',
+        descripcionCorta: 'Plataforma web para gestionar y automatizar procesos de Recursos Humanos en medianas empresas, centralizando información de manera escalable.',
+        descripcionLarga: 'GGRRHH resuelve el problema de gestionar RRHH con procesos manuales o herramientas dispersas que generan errores y pérdida de tiempo. Es un sistema web que automatiza y organiza la gestión de personal, facilitando la administración y la toma de decisiones.',
+        imagenCard: 'imgrrhh.png',
+        imagenDetalle: [
+          'imgrrhh.png'
+        ],
+        caracteristicas: [
+          'Automatización en la gestión y organización del personal',
+          'Administración centralizada de empleados',
+          'Gestión en proceso de selección de postulantes',
+          'Reportes detallados para la toma de decisiones',
+          'En funcionamiento interno en servidor propio Linux'
+        ],
+        tecnologias: [
+          { nombre: 'Django', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg' },
+          { nombre: 'Angular', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg' },
+          { nombre: 'PostgreSQL', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+          { nombre: 'Docker', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+          { nombre: 'Python', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+          { nombre: 'HTML5', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+          { nombre: 'CSS3', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+          { nombre: 'JavaScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+          { nombre: 'Linux', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' }
+        ]
+      }
     ];
   }
 

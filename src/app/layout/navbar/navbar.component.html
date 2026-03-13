@@ -6,17 +6,17 @@
         <span class="brand-name">BRAVO-BYTES</span>
     </div>
 
-    <div class="menu-pc">
+    <div class="menu-pc" [class.open]="isMenuOpen">
         <ul>
-            <li><a class="menu" (click)="inicio()">Inicio</a></li>
-            <li><a class="menu" (click)="proyectos()">Proyectos</a></li>
-            <li><a class="menu btn-cta" (click)="contacto()">Contáctame</a></li>
+            <li><a class="menu" (click)="inicio(); isMenuOpen = false">Inicio</a></li>
+            <li><a class="menu" (click)="proyectos(); isMenuOpen = false">Proyectos</a></li>
+            <li><a class="menu btn-cta" (click)="contacto(); isMenuOpen = false">Contáctame</a></li>
         </ul>
     </div>
 
-    <div class="menu-toggle" (click)="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <div class="hamburger" id="menuBtn" [class.active]="isMenuOpen" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 </nav>
