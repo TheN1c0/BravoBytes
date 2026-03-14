@@ -266,19 +266,36 @@
     max-width: 40ch;
 }
 
+/* Utility to push elements to the bottom of a flex card */
+.mt-auto {
+    margin-top: auto;
+}
+
 /* Espacio para iconos/imagenes por tarjeta */
 .card-media {
     margin-top: 14px;
-    border-radius: 14px;
-    border: 1px dashed rgba(234, 224, 207, .22);
+    border-radius: 12px;
     background: rgba(148, 180, 193, .10);
-    height: 82px;
-    display: grid;
-    place-items: center;
-    color: rgba(234, 224, 207, .78);
-    font-weight: 700;
-    letter-spacing: .08em;
-    font-size: 12px;
+    width: 100%;
+    /* No fixed height, let image dictate or set a standard */
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Soft border blending with the dark card */
+    border: 1px solid rgba(234, 224, 207, 0.08);
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* cover ensures the image fills the space beautifully */
+    transition: transform 0.4s ease;
+}
+
+.card:hover .service-img {
+    transform: scale(1.05); /* Slight zoom on hover for interactivity */
 }
 
 /* PROJECTS */

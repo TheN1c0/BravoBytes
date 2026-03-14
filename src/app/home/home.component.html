@@ -13,7 +13,7 @@
 
       <!-- HERO VIDEO BACKGROUND (Desktop Only) -->
       <div class="hero-video-container desktop-only">
-        <video autoplay loop muted playsinline class="hero-bg-video">
+        <video autoplay loop muted [muted]="true" playsinline class="hero-bg-video">
           <!-- TODO: Ensure user adds "hero-bg.mp4" in the public/ folder -->
           <source src="hero-bg.mp4" type="video/mp4">
         </video>
@@ -175,48 +175,67 @@
 
       <!-- TARJETAS (cuadros) tipo mockup -->
       <section class="cards" id="habilidades-section">
-        <!-- Card 1: Habilidades -->
+        
+        <!-- Cuadro 1: Desarrollo Web -->
         <div class="card op" id="Habilidades">
-          <h2>Habilidades</h2>
+          <h3>Desarrollo de Aplicaciones Web</h3>
+          <p>Creación de aplicaciones web modernas y sistemas internos para empresas.</p>
+          <div class="card-media">
+            <img src="cuadro1.png" alt="Desarrollo de Aplicaciones Web" class="service-img">
+          </div>
           <div class="contenedor-habilidades">
-            <h3>Lenguajes:</h3>
+            <h3>Tecnologías:</h3>
             <div class="habilidad-stack">
-              <span class="habilidad badge">Python</span>
-              <span class="habilidad badge">JavaScript</span>
-              <span class="habilidad badge">SQL</span>
-              <span class="habilidad badge">HTML & CSS</span>
-              <span class="habilidad badge">Java</span>
-            </div>
-
-            <h3>Frameworks:</h3>
-            <div class="habilidad-stack">
+              <span class="badge">Python</span>
               <span class="badge">Django</span>
+              <span class="badge">.NET</span>
+            </div>
+            <div class="habilidad-stack">
+              <span class="badge">React</span>
               <span class="badge">Angular</span>
             </div>
-
-            <h3>Aprendiendo...</h3>
-            <div class="habilidad-stack learning">
-              <span><strong>Machine Learning:</strong> Numpy, Pandas, Regresión Lineal, Scikit-learn</span>
-              <span><strong>Excel:</strong> Intermedio - Avanzado</span>
+            <div class="habilidad-stack">
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">JavaScript</span>
             </div>
           </div>
         </div>
 
+        <!-- Cuadro 2: APIs -->
         <div class="card">
-          <h3>Transformación IT</h3>
-          <p>Moderniza tus sistemas y procesos.</p>
+          <h3>APIs e Integración de Sistemas</h3>
+          <p>Diseño de APIs que permiten que distintos sistemas y aplicaciones se comuniquen entre sí.</p>
           <div class="card-media">
-            <span>ESPACIO IMG</span>
+            <img src="cuadro2.png" alt="APIs e Integración de Sistemas" class="service-img">
+          </div>
+          <div class="contenedor-habilidades mt-auto">
+            <h3>Herramientas:</h3>
+            <div class="habilidad-stack learning">
+               <span><strong>Postman</strong> · SQL</span>
+               <span>Arquitecturas <strong>REST</strong></span>
+               <span>Integración de <strong>servicios</strong></span>
+            </div>
           </div>
         </div>
 
+        <!-- Cuadro 3: Infraestructura -->
         <div class="card">
-          <h3>Soporte y Seguridad</h3>
-          <p>Protección y mantenimiento 24/7.</p>
+          <h3>Infraestructura y Despliegue</h3>
+          <p>Configuración y publicación de aplicaciones en servidores y entornos cloud.</p>
           <div class="card-media">
-            <span>ESPACIO IMG</span>
+            <img src="cuadro3.png" alt="Infraestructura y Despliegue" class="service-img">
+          </div>
+          <div class="contenedor-habilidades mt-auto">
+            <h3>Plataformas:</h3>
+            <div class="habilidad-stack">
+              <span class="badge">Docker</span>
+              <span class="badge">Linux</span>
+              <span class="badge">AWS</span>
+            </div>
           </div>
         </div>
+
       </section>
       <!--  -->
       <app-footer></app-footer>

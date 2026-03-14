@@ -2,34 +2,94 @@
 .footer {
     background: #111C29;
     color: #EAE0CF;
-    padding: 48px 0 48px;
+    padding: 30px 0; /* Reduced padding slightly for a tighter footer */
     position: relative;
+    border-top: 1px solid rgba(234, 224, 207, 0.05); /* Subtle top border */
 }
 
 .footer-inner {
+    width: min(1200px, 92%); /* Align with rest of layout container */
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .footer-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    color: #EAE0CF;
-}
-
-.footer-links {
-    display: flex;
     gap: 12px;
 }
 
-.footer-links a {
-    cursor: pointer;
-    color: rgba(234, 224, 207, .75);
-    text-decoration: none;
+.logo-box {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Suaviza/difumina los bordes de la imagen sutilmente hacia los extremos */
+    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 95%);
+    mask-image: radial-gradient(circle, black 50%, transparent 95%);
+}
+
+.brand-name {
     font-weight: 700;
+    color: #EAE0CF;
+    letter-spacing: 1px;
+}
+
+.footer-copyright {
+    text-align: center;
+    flex: 1; /* Pushes brand to left and social to right on desktop */
+    min-width: 250px;
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(234, 224, 207, 0.6);
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Ensure github icon is white against the dark footer */
+a[aria-label="GitHub"] .social-icon {
+    filter: invert(1) brightness(100);
+}
+
+.social-icon:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .footer-inner {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-copyright {
+        order: 3; /* Push to bottom on mobile */
+        margin-top: 10px;
+    }
 }

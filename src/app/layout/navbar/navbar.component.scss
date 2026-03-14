@@ -11,7 +11,10 @@
     /* #111C29 con 85% de opacidad */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-
+    
+    /* Previene que el cursor se vuelva de texto al pasar o hacer clic rápio sobre elementos del navbar */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .brand {
@@ -24,9 +27,7 @@
 .logo-box {
     width: 38px;
     height: 38px;
-    border-radius: 12px;
-    background: rgba(148, 180, 193, .25);
-    border: 1px solid rgba(234, 224, 207, .18);
+    /* Removed border and background so it's clean */
     display: grid;
     place-items: center;
 }
@@ -34,6 +35,16 @@
 .logo-box.small {
     width: 34px;
     height: 34px;
+}
+
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* Suaviza/difumina los bordes de la imagen sutilmente hacia los extremos */
+    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 95%);
+    mask-image: radial-gradient(circle, black 50%, transparent 95%);
 }
 
 .logo-b {
