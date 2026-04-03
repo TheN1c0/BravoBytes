@@ -91,6 +91,34 @@ export class ProyectosComponent {
           { nombre: 'JavaScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
           { nombre: 'Linux', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' }
         ]
+      },
+      {
+        titulo: 'Agenda Social',
+        descripcionCorta: 'Plataforma integral para gestionar casos sociales. Desarrollada con React y Node.js, alojada en un servidor propio con Linux Server y túneles Cloudflared.',
+        descripcionLarga: 'Agenda Social es una potente solución para el registro, seguimiento y analítica de casos sociales. Su arquitectura consta de dos partes bien definidas: un Front-end interactivo creado con React, Vite y TailwindCSS que incorpora gráficos interactivos (Recharts, Chart.js); y un Back-end implementado en Node.js mediante Express con Prisma ORM y almacenamiento en PostgreSQL. Todo el sistema está alojado en un servidor propio utilizando Linux Server, y la comunicación con la web externa mediante túneles seguros gestionados por Cloudflare.',
+        imagenCard: 'imgagso.png',
+        imagenDetalle: [
+          'imgagso.png'
+        ],
+        caracteristicas: [
+          'Alojamiento en servidor propio utilizando infraestructura Linux Server',
+          'Dashboard completo e interactivo con seguimiento de estadísticas',
+          'Frontend altamente optimizado (Vite + React + TS)',
+          'Seguridad rigurosa con autenticación JWT, cookies, y validación en express',
+          'Soporte completo CRUD, administración de archivos e historial de casos',
+          'Despliegue y tunelización segura en red'
+        ],
+        tecnologias: [
+          { nombre: 'React', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+          { nombre: 'Vite', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg' },
+          { nombre: 'Node.js', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+          { nombre: 'Express', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
+          { nombre: 'Prisma', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg' },
+          { nombre: 'PostgreSQL', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+          { nombre: 'TailwindCSS', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+          { nombre: 'Linux', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' }
+        ],
+        linkSitio: 'https://agendasocial.bravo-bytes.com/'
       }
     ];
   }
