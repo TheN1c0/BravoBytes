@@ -90,5 +90,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   proyectos(){
     this.router.navigate(['/proyectos']);
   }
+  verProyecto(id: string) {
+    this.router.navigate(['/proyectos'], { queryParams: { proyecto: id } });
+  }
 
 }

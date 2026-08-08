@@ -50,12 +50,22 @@
                         </button>
                     </div>
                     
-                    <!-- Modal Body: Image Gallery Slider -->
+                    <!-- Modal Body: Video or Image Gallery Slider -->
                     <div class="modal-gallery">
-                        <div class="slider-container">
+                        <!-- Si el proyecto tiene video, mostramos el iframe -->
+                        <div *ngIf="proyectoSeleccionado.videoUrl" class="video-container">
+                            <iframe 
+                                [src]="getSafeVideoUrl(proyectoSeleccionado.videoUrl)" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <!-- De lo contrario, mostramos la galería de imágenes tradicional -->
+                        <div *ngIf="!proyectoSeleccionado.videoUrl" class="slider-container">
                            <ul [ngClass]="'slide-count-' + proyectoSeleccionado.imagenDetalle.length">
                              <li *ngFor="let img of proyectoSeleccionado.imagenDetalle">
-                               <img [src]="img" alt="Project detail">
+                               <img [src]="img" alt="Detalle del proyecto">
                              </li>
                            </ul>
                         </div>

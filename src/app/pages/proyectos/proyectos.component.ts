@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { NavbarComponent } from '../../layout/navbar/navbar.component';
 
@@ -16,6 +17,7 @@ export interface Proyecto {
   caracteristicas: string[]; // Bullet points for the modal
   tecnologias: { nombre: string; icono: string }[]; // E.g., {nombre: 'Python', icono: 'url...'}
   linkSitio?: string;
+  videoUrl?: string; // YouTube embed URL
 }
 
 @Component({
@@ -25,14 +27,33 @@ export interface Proyecto {
   templateUrl: './proyectos.component.html',
   styleUrl: './proyectos.component.scss',
 })
-export class ProyectosComponent {
+export class ProyectosComponent implements OnInit {
   // Removed menu attribute
   listaProyectos: Proyecto[] = []; 
   proyectoSeleccionado: Proyecto | null = null;
   imagen1: string = 'proyectosimg/inicio.png';
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) {
     this.inicializarListaProyectos(); 
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params['proyecto'] === 'smart-english-notes') {
+        const found = this.listaProyectos.find(p => p.titulo.toLowerCase().includes('english'));
+        if (found) {
+          this.abrirModal(found);
+        }
+      }
+    });
+  }
+
+  getSafeVideoUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   inicializarListaProyectos() {
@@ -64,6 +85,33 @@ export class ProyectosComponent {
           { nombre: 'JavaScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' }
         ],
         // linkSitio: 'https://tu-sitio.com' si lo tuvieras
+      },
+      {
+        titulo: 'Smart English Notes',
+        descripcionCorta: 'Aplicación web progresiva (PWA) con IA para registrar y estudiar vocabulario, expresiones y pronunciación en inglés.',
+        descripcionLarga: 'Smart English Notes es una aplicación web progresiva (PWA) diseñada para estudiantes de inglés. Permite registrar, organizar y estudiar vocabulario, expresiones y phrasal verbs de forma inteligente. Utiliza la API de Gemini (gemini-flash-latest) para la generación automática de fichas de estudio enriquecidas con transcripción fonética (IPA), significados y consejos de listening, y la API de ElevenLabs para reproducir pronunciaciones hiperrealistas con caché de audio local.',
+        imagenCard: 'https://img.youtube.com/vi/f96aH99a9S0/maxresdefault.jpg',
+        imagenDetalle: [],
+        videoUrl: 'https://www.youtube.com/embed/f96aH99a9S0',
+        caracteristicas: [
+          'Generación automática de fichas de estudio con Inteligencia Artificial (Gemini AI)',
+          'Pronunciación por síntesis de voz hiperrealista con ElevenLabs y caché local',
+          'Soporte sin conexión y acceso rápido como Aplicación Web Progresiva (PWA)',
+          'Autenticación segura JWT y límite de peticiones (Rate-limiting) en backend Node.js',
+          'Base de datos SQLite optimizada y scripts en Python para migración de datos'
+        ],
+        tecnologias: [
+          { nombre: 'HTML5', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+          { nombre: 'CSS3', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+          { nombre: 'JavaScript', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+          { nombre: 'PWA', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pwa/pwa-original.svg' },
+          { nombre: 'Node.js', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+          { nombre: 'Express', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
+          { nombre: 'SQLite', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
+          { nombre: 'Python', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+          { nombre: 'Gemini AI', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg' },
+          { nombre: 'ElevenLabs API', icono: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23EAE0CF"><rect x="3" y="9" width="3" height="6" rx="1.5"/><rect x="8" y="5" width="3" height="14" rx="1.5"/><rect x="13" y="7" width="3" height="10" rx="1.5"/><rect x="18" y="10" width="3" height="4" rx="1.5"/></svg>' }
+        ]
       },
       {
         titulo: 'Go Gestión de Recursos Humanos (GGRRHH)',
