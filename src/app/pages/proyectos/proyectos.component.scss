@@ -258,13 +258,14 @@ h3.proximamente-text {
   background: #152230; /* Slightly darker behind the images */
   padding: 30px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .video-container {
   position: relative;
   width: 100%;
   max-width: 800px;
-  height: 350px;
+  aspect-ratio: 16 / 9;
   margin: 0 auto;
   border-radius: 8px;
   overflow: hidden;
@@ -283,7 +284,7 @@ h3.proximamente-text {
 .slider-container {
   width: 100%;
   max-width: 800px; /* Adjusted to fit the modal nicely */
-  height: 350px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   margin: 0 auto;
   border-radius: 8px;
@@ -354,6 +355,8 @@ h3.proximamente-text {
 .modal-info {
   padding: 30px 40px;
   overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 .modal-info h2 {
@@ -429,10 +432,6 @@ h3.proximamente-text {
   .modal-info, .modal-actions {
     padding-left: 20px;
     padding-right: 20px;
-  }
-  
-  .slider-container {
-    height: 200px;
   }
   
   .proyectos-grid {
