@@ -300,7 +300,64 @@
 
     .message-text {
       margin: 0;
-      white-space: pre-wrap;
+      word-break: break-word;
+
+      p {
+        margin: 0 0 8px 0;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      strong, b {
+        font-weight: 700;
+        color: #f8fafc;
+      }
+
+      ul, ol {
+        margin: 6px 0;
+        padding-left: 18px;
+      }
+
+      li {
+        margin-bottom: 4px;
+        line-height: 1.4;
+      }
+
+      code {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.82rem;
+        color: #38bdf8;
+      }
+
+      pre {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 8px 10px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 6px 0;
+
+        code {
+          background: transparent;
+          border: none;
+          padding: 0;
+        }
+      }
+
+      a {
+        color: #00f2fe;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #7dd3fc;
+        }
+      }
     }
 
     .message-time {

@@ -65,7 +65,7 @@
           </div>
 
           <div class="message-bubble">
-            <p class="message-text">{{ msg.text }}</p>
+            <div class="message-text" [innerHTML]="msg.text | markdown"></div>
             <span class="message-time">{{ msg.timestamp | date:'shortTime' }}</span>
           </div>
         </div>
