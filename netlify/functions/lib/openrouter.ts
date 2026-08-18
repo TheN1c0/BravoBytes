@@ -8,7 +8,7 @@ export interface OpenRouterResult {
   };
 }
 
-const DEFAULT_MODEL = 'google/gemini-2.0-flash-001';
+const DEFAULT_MODEL = 'google/gemini-2.5-flash';
 const REQUEST_TIMEOUT_MS = 12000; // 12 seconds timeout
 
 const DEFAULT_SYSTEM_PROMPT = `Eres el Asistente Virtual oficial del portafolio profesional BravoBytes, perteneciente a Nicolás Bravo (Analista Programador / Desarrollador Full-Stack).
@@ -40,8 +40,12 @@ export async function queryOpenRouter(userMessage: string): Promise<OpenRouterRe
     throw new Error('OPENROUTER_API_KEY is not configured in environment.');
   }
 
-  const model = process.env['OPENROUTER_MODEL'] || DEFAULT_MODEL;
+  let model = process.env['OPENROUTER_MODEL'] || DEFAULT_MODEL;
+  if (model === 'google/gemini-2.0-flash-001') {
+    model = 'google/gemini-2.5-flash';
+  }
   const systemPrompt = process.env['BRAVOBYTES_SYSTEM_PROMPT'] || DEFAULT_SYSTEM_PROMPT;
+
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
