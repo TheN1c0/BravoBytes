@@ -6,22 +6,38 @@ import { verifyTurnstileToken } from './lib/turnstile';
 import { queryOpenRouter } from './lib/openrouter';
 import { ChatSuccessResponse, ChatErrorResponse, StructuredLog } from './lib/types';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Content-Type': 'application/json',
-};
+function getCorsHeaders(requestOrigin?: string): Record<string, string> {
+  const allowedOriginConfig = process.env['ALLOWED_ORIGIN'];
+  let origin = '*';
+
+  if (allowedOriginConfig) {
+    const allowedList = allowedOriginConfig.split(',').map((o) => o.trim());
+    if (requestOrigin && allowedList.includes(requestOrigin)) {
+      origin = requestOrigin;
+    } else {
+      origin = allowedList[0] || '*';
+    }
+  }
+
+  return {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Content-Type': 'application/json',
+  };
+}
 
 export const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) => {
   const startTime = Date.now();
   const requestId = generateRequestId();
+  const requestOrigin = event.headers['origin'] || event.headers['Origin'];
+  const corsHeaders = getCorsHeaders(requestOrigin);
 
   // Handle CORS preflight
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 204,
-      headers: CORS_HEADERS,
+      headers: corsHeaders,
       body: '',
     };
   }
@@ -65,7 +81,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     return {
       statusCode: status,
-      headers: CORS_HEADERS,
+      headers: corsHeaders,
       body: JSON.stringify(errorResponse),
     };
   }
@@ -94,7 +110,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     return {
       statusCode: 403,
-      headers: CORS_HEADERS,
+      headers: corsHeaders,
       body: JSON.stringify(errorResponse),
     };
   }
@@ -120,7 +136,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     return {
       statusCode: 429,
-      headers: CORS_HEADERS,
+      headers: corsHeaders,
       body: JSON.stringify(errorResponse),
     };
   }
@@ -152,7 +168,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     return {
       statusCode: 200,
-      headers: CORS_HEADERS,
+      headers: corsHeaders,
       body: JSON.stringify(successResponse),
     };
   } catch (error: any) {
@@ -173,7 +189,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     return {
       statusCode: status,
-      headers: CORS_HEADERS,
+      headers: corsHeaders,
       body: JSON.stringify(errorResponse),
     };
   }
