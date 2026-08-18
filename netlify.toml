@@ -5,3 +5,11 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[dev]
+  command = "npm start"
+  port = 8888
+  targetPort = 4200
+  publish = "dist/bravo-bytes/browser"
+  functions = "netlify/functions"
+
