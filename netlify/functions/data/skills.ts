@@ -6,7 +6,7 @@ export const SKILLS_DATA = `HABILIDADES Y TECNOLOGÍAS:
    - Infraestructura y Herramientas: Docker, AWS, Linux, Git, GitHub.
 
 2. Nivel Intermedio (Conocimiento técnico, no presentar como avanzado ni experto):
-   - Java: Nivel intermedio (conocimiento técnico, no experiencia profesional empresarial).
+   - Java: Nivel intermedio (conocimientos técnicos registrados; no se registra experiencia profesional específica en frameworks como Spring).
    - Análisis de Datos: Excel (intermedio), Power BI (intermedio).
 
 3. En Aprendizaje y Aplicación Práctica:

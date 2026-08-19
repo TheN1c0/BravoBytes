@@ -94,16 +94,13 @@ export function getRelevantKnowledge(userMessage: string): KnowledgeSelectionRes
 - No existe experiencia laboral previa registrada en el sector bancario o financiero.
 - Cuenta con sólidas bases técnicas en backend (.NET, Node.js, Python), APIs RESTful, bases de datos SQL y arquitectura cloud que le permitirían abordar proyectos complejos.`);
     }
-    if (/\b(microsoft|google|amazon|meta)\b/i.test(query) && !mentionsEducation) {
-      sections.push(`INFORMACIÓN DE EMPRESAS:
-- Nicolás cuenta con la certificación oficial "Microsoft Certified: Azure Fundamentals".
-- No ha trabajado como empleado directo de Microsoft u otras big tech (su experiencia previa no ligada al software fue en Jumbo).`);
-    }
   }
 
   // 8. Specific entity checks (e.g. ¿Trabajó en Microsoft?)
-  if (/\b(microsoft)\b/i.test(query) && !sections.includes(EDUCATION_DATA)) {
-    sections.push(EDUCATION_DATA);
+  if (/\b(microsoft|google|amazon|meta)\b/i.test(query)) {
+    sections.push(`INFORMACIÓN DE EMPRESAS Y CERTIFICACIONES:
+- No se tiene registrada experiencia laboral de Nicolás en Microsoft u otras big tech.
+- Sí cuenta con la certificación oficial "Microsoft Certified: Azure Fundamentals".`);
   }
 
   // 9. Default Fallback for generic profile questions (e.g. "¿Quién es Nicolás?", "Resumen")
