@@ -4,6 +4,7 @@ import { validateRequest } from './lib/security';
 import { checkRateLimitAndQuota } from './lib/rate-limiter';
 import { verifyTurnstileToken } from './lib/turnstile';
 import { queryOpenRouter } from './lib/openrouter';
+import { getRelevantKnowledge } from './data/retriever';
 import { ChatSuccessResponse, ChatErrorResponse, StructuredLog } from './lib/types';
 
 function getCorsHeaders(requestOrigin?: string): Record<string, string> {
@@ -143,9 +144,36 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
   logData.rateLimitResult = 'ALLOWED';
 
-  // 4. OpenRouter Gateway Call
+  // 4. Deterministic Knowledge Retrieval
+  const knowledge = getRelevantKnowledge(message);
+  logData.category = knowledge.category || validation.category;
+
+  if (knowledge.isOutOfScope) {
+    const durationMs = Date.now() - startTime;
+    logData.status = 200;
+    logData.durationMs = durationMs;
+    logData.model = 'local_retriever';
+    logData.outputLength = 84;
+    logData.promptTokens = 0;
+    logData.completionTokens = 0;
+    logData.totalTokens = 0;
+    logStructured(logData);
+
+    const outOfScopeResponse: ChatSuccessResponse = {
+      answer: 'Solo puedo responder preguntas relacionadas con Nicolás Bravo, BravoBytes y su perfil profesional.',
+      remainingQuota: rateLimitStatus.remainingQuota,
+    };
+
+    return {
+      statusCode: 200,
+      headers: corsHeaders,
+      body: JSON.stringify(outOfScopeResponse),
+    };
+  }
+
+  // 5. OpenRouter Gateway Call with Minimal Context
   try {
-    const llmResult = await queryOpenRouter(message);
+    const llmResult = await queryOpenRouter(message, knowledge.context);
     const durationMs = Date.now() - startTime;
 
     logData.status = 200;
