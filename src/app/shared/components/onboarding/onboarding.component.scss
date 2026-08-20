@@ -1,0 +1,433 @@
+/* ==========================================================================
+   ONBOARDING & HELP GUIDE STYLES (BRAVOBYTES THEME)
+   ========================================================================== */
+
+/* Botón Flotante Permanente de Ayuda '?' (Esquina Inferior Izquierda) */
+.onboarding-help-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1.5px solid rgba(0, 242, 254, 0.45);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 14px rgba(0, 242, 254, 0.25);
+  cursor: pointer;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+
+  .help-icon {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #00f2fe;
+    font-family: inherit;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+
+  .fab-pulse {
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.3) 0%, transparent 70%);
+    animation: helpPulse 3.5s infinite ease-in-out;
+    pointer-events: none;
+  }
+
+  .help-tooltip {
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-8px);
+    background: rgba(17, 28, 41, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #EAE0CF;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1.06);
+    border-color: #00f2fe;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.45);
+
+    .help-icon {
+      transform: rotate(-10deg) scale(1.1);
+    }
+
+    .help-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #00f2fe;
+    outline-offset: 3px;
+  }
+}
+
+/* Contenedor Principal del Onboarding */
+.onboarding-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* Backdrop suave para evitar clics accidentales detrás */
+.onboarding-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 18, 28, 0.65);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 10001;
+  pointer-events: auto;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Foco luminoso / Spotlight sobre el elemento */
+.onboarding-spotlight {
+  position: fixed;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 242, 254, 0.85);
+  box-shadow: 0 0 0 4px rgba(0, 242, 254, 0.2), 0 0 25px rgba(0, 242, 254, 0.4);
+  pointer-events: none;
+  z-index: 10002;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 4px;
+  margin: -4px;
+
+  .spotlight-glow {
+    position: absolute;
+    inset: -6px;
+    border-radius: 14px;
+    border: 1px dashed rgba(0, 242, 254, 0.6);
+    animation: spotlightPulse 2s infinite ease-in-out;
+  }
+}
+
+/* Tarjeta Flotante */
+.onboarding-card {
+  box-sizing: border-box;
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  position: fixed;
+  z-index: 10003;
+  pointer-events: auto;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: linear-gradient(145deg, rgba(23, 37, 56, 0.95), rgba(15, 23, 42, 0.98));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(0, 242, 254, 0.4);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 242, 254, 0.2);
+  color: #EAE0CF;
+  animation: cardScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+
+  /* Encabezado */
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    .step-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .step-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+
+      .step-badge {
+        font-size: 0.76rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #00f2fe;
+        background: rgba(0, 242, 254, 0.12);
+        border: 1px solid rgba(0, 242, 254, 0.3);
+        padding: 3px 8px;
+        border-radius: 20px;
+      }
+    }
+
+    .btn-close-tour {
+      background: transparent;
+      border: none;
+      color: rgba(234, 224, 207, 0.6);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        color: #EAE0CF;
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+  }
+
+  /* Cuerpo */
+  .card-body {
+    margin-bottom: 16px;
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #EAE0CF;
+      margin: 0 0 6px 0;
+      letter-spacing: 0.2px;
+    }
+
+    .card-description {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: #94B4C1;
+      margin: 0;
+    }
+  }
+
+  /* Indicador de pasos con puntitos */
+  .step-indicators {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+
+    .indicator-dot {
+      height: 4px;
+      width: 14px;
+      border-radius: 2px;
+      background: rgba(234, 224, 207, 0.2);
+      transition: all 0.3s ease;
+
+      &.active {
+        width: 26px;
+        background: linear-gradient(90deg, #00f2fe, #4facfe);
+        box-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+      }
+
+      &.completed {
+        background: rgba(0, 242, 254, 0.5);
+      }
+    }
+  }
+
+  /* Footer y Botones */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    .btn-text-skip {
+      background: transparent;
+      border: none;
+      color: rgba(234, 224, 207, 0.6);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #EAE0CF;
+        text-decoration: underline;
+      }
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .btn-secondary {
+        background: rgba(148, 180, 193, 0.12);
+        border: 1px solid rgba(234, 224, 207, 0.25);
+        color: #EAE0CF;
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: rgba(148, 180, 193, 0.22);
+          border-color: rgba(234, 224, 207, 0.4);
+        }
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        border: none;
+        color: #0b1320;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 8px 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(0, 242, 254, 0.35);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 18px rgba(0, 242, 254, 0.5);
+          filter: brightness(1.05);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  /* Flecha / Puntero hacia el objetivo */
+  .card-arrow {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #172538;
+    transform: rotate(45deg);
+    border: 1.5px solid rgba(0, 242, 254, 0.4);
+  }
+
+  &.arrow-up .card-arrow {
+    top: -8px;
+    left: 40px;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  &.arrow-down .card-arrow {
+    bottom: -8px;
+    right: 36px;
+    border-top: none;
+    border-left: none;
+    background: #0f172a;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIONES
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cardScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes helpPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes spotlightPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.3;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .onboarding-help-fab {
+    bottom: 20px;
+    left: 20px;
+    width: 42px;
+    height: 42px;
+
+    .help-icon {
+      font-size: 1.1rem;
+    }
+
+    .help-tooltip {
+      display: none; /* En móvil no mostramos hover tooltip para evitar solapamientos */
+    }
+  }
+
+  .onboarding-card {
+    width: auto !important;
+    max-width: calc(100vw - 32px) !important;
+    left: 16px !important;
+    right: 16px !important;
+    padding: 16px;
+
+    .card-title {
+      font-size: 1.05rem;
+    }
+
+    .card-description {
+      font-size: 0.88rem;
+    }
+
+    &.arrow-up .card-arrow {
+      left: 28px;
+    }
+
+    &.arrow-down .card-arrow {
+      right: 28px;
+    }
+  }
+}
