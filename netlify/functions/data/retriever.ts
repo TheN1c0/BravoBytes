@@ -33,11 +33,15 @@ export function getRelevantKnowledge(userMessage: string): KnowledgeSelectionRes
   const sections: string[] = [];
 
   // 2. Specific Project Queries
+  const mentionsMultiCopy = /\b(multicopy|multi copy|extensi[oó]n\w*|excel\w*|sheets|autofill|formulario\w*|service workers?|content scripts?|manifest v3|autocomplet\w*)\b/i.test(query);
   const mentionsNixLang = /\b(nixlang|nix|edtech)\b/i.test(query);
   const mentionsSmartEnglish = /\b(smart english|english notes|apuntes|ia en ingles|audio)\b/i.test(query);
   const mentionsBravoBytes = /\b(bravobytes|portfolio|portafolio|asistente|bravobot)\b/i.test(query);
-  const mentionsGeneralProjects = /\b(proyectos?|desarrollos?|aplicaciones|apps)\b/i.test(query);
+  const mentionsGeneralProjects = /\b(proyectos?|desarrollos?|aplicaci[oó]n|aplicaciones|apps?)\b/i.test(query);
 
+  if (mentionsMultiCopy) {
+    sections.push(PROJECTS_DATA.multicopy);
+  }
   if (mentionsNixLang) {
     sections.push(PROJECTS_DATA.nixlang);
   }
@@ -47,30 +51,30 @@ export function getRelevantKnowledge(userMessage: string): KnowledgeSelectionRes
   if (mentionsBravoBytes) {
     sections.push(PROJECTS_DATA.bravoBytes);
   }
-  if (mentionsGeneralProjects && !mentionsNixLang && !mentionsSmartEnglish && !mentionsBravoBytes) {
+  if (mentionsGeneralProjects && !mentionsMultiCopy && !mentionsNixLang && !mentionsSmartEnglish && !mentionsBravoBytes) {
     sections.push(ALL_PROJECTS_SUMMARY);
   }
 
   // 3. Contact & Location & Privacy Queries
-  const mentionsContact = /\b(contacto|contactar|email|correo|linkedin|github|telefono|numero|celular|direccion|donde vive|donde esta|ubicacion|residencia|rut)\b/i.test(query);
+  const mentionsContact = /\b(contact\w*|comunic\w*|correo\w*|email\w*|mail\w*|gmail|linkedin|github|redes|rrss|tel[eé]fono\w*|celular\w*|whatsapp|wsp|n[uú]mero\w*|direcci[oó]n|d[oó]nde vive|d[oó]nde est[aá]|ubicaci[oó]n|ubicar\w*|residencia|rut|escribir\w*|hablar\w*|mensaje\w*)\b/i.test(query);
   if (mentionsContact) {
     sections.push(CONTACT_DATA);
   }
 
   // 4. Education & Certifications
-  const mentionsEducation = /\b(estudio|estudió|estudios|universidad|instituto|duoc|titulado|titulo|carrera|certificaci[oó]n|certificaciones|azure fundamentals)\b/i.test(query);
+  const mentionsEducation = /\b(estudi\w*|universidad\w*|instituto\w*|duoc\w*|titul\w*|carrera\w*|certificaci[oó]n\w*|certificados?|azure fundamentals)\b/i.test(query);
   if (mentionsEducation) {
     sections.push(EDUCATION_DATA);
   }
 
   // 5. Experience & Work History (including Jumbo)
-  const mentionsExperience = /\b(experiencia|trabajo|trabajó|empleo|laboral|trayectoria|jumbo|cajero|empresas?|cliente)\b/i.test(query);
+  const mentionsExperience = /\b(experiencia\w*|trabaj\w*|emple\w*|laboral\w*|trayectoria\w*|jumbo|cajer\w*|empresas?|clientes?)\b/i.test(query);
   if (mentionsExperience) {
     sections.push(EXPERIENCE_DATA);
   }
 
   // 6. Skills, Languages, Tools & Tech Stack
-  const mentionsSkills = /\b(tecnolog[ií]as?|skills?|lenguajes?|herramientas?|stack|conocimientos?|frontend|backend|frameworks?|angular|react|net|c#|python|django|node|docker|aws|linux|sql|postgres|supabase|java|excel|power bi|github actions)\b/i.test(query);
+  const mentionsSkills = /\b(tecnolog[ií]a\w*|skills?|lenguajes?|herramientas?|stack|conocimientos?|frontend|backend|frameworks?|angular|react|net|c#|python|django|node|docker|aws|linux|sql|postgres|supabase|java|excel|power bi|github actions)\b/i.test(query);
   if (mentionsSkills) {
     sections.push(SKILLS_DATA);
   }

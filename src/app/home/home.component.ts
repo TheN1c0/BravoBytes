@@ -27,14 +27,14 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     private metaService: Meta
   ) {}
   ngOnInit() {
-    this.titleService.setTitle('Mi Portafolio - Desarrollo Web y Programación');
+    this.titleService.setTitle('BravoBytes | Productos de Software & Soluciones Web');
     this.metaService.updateTag({
       name: 'description',
-      content: 'Soy desarrollador especializado como Analista Programador. En mi página web encontrarás contenido sobre mis habilidades, proyectos y mi pasión por la tecnología.'
+      content: 'Desarrollo de productos de software, herramientas de productividad y plataformas web escalables. Extensiones de navegador, soluciones con Inteligencia Artificial y aplicaciones listas para producción.'
     });
     this.metaService.updateTag({
       name: 'keywords',
-      content: 'desarrollador, analista programador, programación, Python, JavaScript, Angular, Django, desarrollo web, machine learning, proyectos, tecnología'
+      content: 'BravoBytes, desarrollo de software, productos digitales, extensiones navegador, MultiCopy, Angular, .NET, React, Inteligencia Artificial, soluciones web, Nicolás Bravo'
     });
   }
   ngAfterViewInit(): void {

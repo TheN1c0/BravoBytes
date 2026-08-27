@@ -1,6 +1,6 @@
 export const PROFILE_DATA = `PERFIL PROFESIONAL:
 - Nombre: Nicolás Bravo Guzmán.
-- Rol: Desarrollador Full Stack con orientación hacia backend.
+- Rol: Desarrollador de Software y Creador de Productos Digitales / Full Stack con sólida orientación a soluciones funcionales y arquitecturas backend.
 - Formación: Analista Programador titulado de Duoc UC (2025).
 - Certificación: Microsoft Certified: Azure Fundamentals.
 - Ubicación: Región Metropolitana, Chile.

@@ -24,9 +24,9 @@ export class AiAssistantComponent implements OnInit, AfterViewChecked {
   public readonly MAX_CHARS = 300;
 
   public suggestedQuestions: string[] = [
-    '¿Qué tecnologías domina Nicolás?',
-    '¿Qué proyectos destacados tiene?',
-    '¿Tiene proyectos con Inteligencia Artificial?',
+    '¿Qué productos ha desarrollado Nicolás?',
+    '¿Cómo funciona la extensión MultiCopy?',
+    '¿Qué proyectos tienen Inteligencia Artificial?',
     '¿Cómo puedo contactarlo?'
   ];
 

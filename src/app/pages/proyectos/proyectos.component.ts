@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title, Meta } from '@angular/platform-browser';
 
 import { NavbarComponent } from '../../layout/navbar/navbar.component';
 
@@ -36,15 +36,28 @@ export class ProyectosComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+    private metaService: Meta
   ) {
     this.inicializarListaProyectos(); 
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Productos & Soluciones | BravoBytes');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Explora los productos de software, extensiones de navegador y aplicaciones web desarrolladas por BravoBytes.'
+    });
+
     this.route.queryParams.subscribe(params => {
-      if (params['proyecto'] === 'smart-english-notes') {
-        const found = this.listaProyectos.find(p => p.titulo.toLowerCase().includes('english'));
+      const projParam = params['proyecto'];
+      if (projParam) {
+        const found = this.listaProyectos.find(p => 
+          p.titulo.toLowerCase().includes(projParam.toLowerCase()) ||
+          (projParam === 'smart-english-notes' && p.titulo.toLowerCase().includes('english')) ||
+          (projParam === 'multicopy' && p.titulo.toLowerCase().includes('multicopy'))
+        );
         if (found) {
           this.abrirModal(found);
         }
@@ -58,6 +71,29 @@ export class ProyectosComponent implements OnInit {
 
   inicializarListaProyectos() {
     this.listaProyectos = [
+      {
+        titulo: 'MultiCopy (Extensión Chromium & Excel Form Autofill)',
+        descripcionCorta: 'Extensión de navegador que automatiza el llenado de formularios web a partir de datos copiados directamente desde Excel o Google Sheets.',
+        descripcionLarga: 'MultiCopy es una extensión de navegador diseñada para automatizar y acelerar el llenado de formularios web a partir de datos copiados directamente desde hojas de cálculo (Excel o Google Sheets). Su objetivo es eliminar tareas repetitivas y propensas a errores manuales, permitiendo vincular columnas con campos de la página mediante un selector visual intuitivo y autocompletarlos al instante con un atajo de teclado. Desarrollada bajo el estándar Chromium Manifest V3, opera 100% en local garantizando máxima privacidad sin servidores externos, y es compatible con aplicaciones modernas en React, Vue y Angular mediante la emulación de eventos sintéticos y setters nativos.',
+        imagenCard: 'proyectosimg/multicopy_card.jpg',
+        imagenDetalle: [],
+        videoUrl: 'https://www.youtube.com/embed/Kqk3ErFegSA',
+        caracteristicas: [
+          'Autocompletado instantáneo de formularios web mediante atajos de teclado personalizables (Ctrl+Shift+V)',
+          'Selector visual interactivo en pantalla para mapear columnas de Excel/Google Sheets a campos del DOM',
+          'Arquitectura modular basada en Chromium Manifest V3 con Service Workers y Content Scripts',
+          'Compatibilidad total con Single Page Applications (SPAs en React, Vue y Angular) mediante emulación de eventos sintéticos y setters nativos',
+          'Máxima seguridad y privacidad: ejecución 100% local en el cliente con chrome.storage (sin servidores ni analíticas externas)',
+          'En proceso de revisión y publicación para Microsoft Edge Add-ons y Chrome Web Store'
+        ],
+        tecnologias: [
+          { nombre: 'JavaScript (ES6+)', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+          { nombre: 'HTML5', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+          { nombre: 'CSS3', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+          { nombre: 'Chromium Manifest V3', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg' },
+          { nombre: 'Chrome Storage API', icono: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23EAE0CF"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>' }
+        ]
+      },
       {
         titulo: 'Sistema de Administración de Inventario (Stock Master)',
         descripcionCorta: 'Sistema de gestión de inventario para optimizar el control de productos con autenticación y roles.',
