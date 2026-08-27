@@ -68,9 +68,10 @@
           <p>Software funcional y herramientas diseñadas para resolver problemas reales</p>
         </div>
 
-        <swiper-container class="projects-carousel" loop="true" centered-slides="true" slides-per-view="auto" space-between="24"
+        <swiper-container class="projects-carousel" loop="true" slides-per-view="auto" space-between="24"
           autoplay-delay="4500" autoplay-disable-on-interaction="false" autoplay-pause-on-mouse-enter="true"
-          navigation="true" pagination="true" pagination-clickable="true">
+          navigation="true" pagination="true" pagination-clickable="true"
+          breakpoints='{"0": {"centeredSlides": true, "spaceBetween": 16}, "981": {"centeredSlides": false, "spaceBetween": 24}}'>
 
           <!-- Proyecto 1: MultiCopy (Extensión Chromium) -->
           <swiper-slide>
@@ -116,6 +117,63 @@
           </swiper-slide>
 
           <!-- Proyecto 4: Smart English Notes -->
+          <swiper-slide>
+            <a (click)="verProyecto('smart-english-notes')" class="project-preview hr-project" style="cursor: pointer;">
+              <span class="demo-badge">🎥 Demo en Video</span>
+              <img src="https://img.youtube.com/vi/f96aH99a9S0/maxresdefault.jpg" alt="Smart English Notes" class="project-preview-img">
+              <div class="project-preview-info">
+                <h3>Smart English Notes</h3>
+                <p>
+                  Gestor inteligente de apuntes de inglés potenciado por IA (Gemini y ElevenLabs) y estructurado como una PWA interactiva para un estudio óptimo sin conexión.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Duplicado 1 (MultiCopy) -->
+          <swiper-slide>
+            <a (click)="verProyecto('multicopy')" class="project-preview hr-project" style="cursor: pointer;">
+              <span class="demo-badge">🎥 Demo en Video</span>
+              <img src="proyectosimg/multicopy_card.jpg" alt="MultiCopy - Extensión Chromium & Excel Form Autofill" class="project-preview-img">
+              <div class="project-preview-info">
+                <h3>MultiCopy</h3>
+                <p>
+                  Extensión de navegador (Chromium Manifest V3) que automatiza el llenado de formularios web mapeando datos desde Excel o Google Sheets con ejecución 100% local.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Duplicado 2 (RRHH) -->
+          <swiper-slide>
+            <a href="https://rrhh.bravo-bytes.com/portal" target="_blank" rel="noreferrer"
+              class="project-preview hr-project">
+              <img src="imgrrhh.png" alt="Gestor de Recursos Humanos" class="project-preview-img">
+              <div class="project-preview-info">
+                <h3>Gestor de Recursos Humanos</h3>
+                <p>
+                  Permite agregar empleados, generar liquidaciones de sueldo, y definir cargos de forma rápida y
+                  sencilla.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+
+          <!-- Duplicado 3 (Agenda Social) -->
+          <swiper-slide>
+            <a href="https://agendasocial.bravo-bytes.com/" target="_blank" rel="noreferrer" class="project-preview hr-project">
+              <span class="demo-badge">🚀 Demo Disponible</span>
+              <img src="imgagso.png" alt="Agenda Social - Gestor de Casos Sociales" class="project-preview-img">
+              <div class="project-preview-info">
+                <h3>Agenda Social</h3>
+                <p>
+                  Plataforma integral para la gestión de casos sociales. Construida con un frontend en React (Vite) y Chart.js analítico. El backend emplea Node.js (Express) y PostgreSQL, alojado en un servidor propio con Linux Server, e interconectado de manera segura con Cloudflare.
+                </p>
+              </div>
+            </a>
+          </swiper-slide>
+ 
+          <!-- Duplicado 4 (Smart English Notes) -->
           <swiper-slide>
             <a (click)="verProyecto('smart-english-notes')" class="project-preview hr-project" style="cursor: pointer;">
               <span class="demo-badge">🎥 Demo en Video</span>

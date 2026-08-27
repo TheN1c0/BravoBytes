@@ -341,8 +341,8 @@
 }
 
 .projects-carousel {
-    padding: 10px 0 35px 0;
-    /* Padding for shadow overflow and pagination spacing */
+    padding: 10px 10px 30px 10px;
+    /* Padding for shadow overflow and spacing */
     width: 100%;
     margin: 0 auto;
     --swiper-theme-color: #213448;
@@ -355,12 +355,9 @@
 }
 
 swiper-slide {
-    width: 86%;
+    width: 85%;
     max-width: 450px;
     height: auto;
-    display: flex;
-    justify-content: center;
-    box-sizing: border-box;
 }
 
 .project-preview {
@@ -380,12 +377,9 @@ swiper-slide {
     /* Centrar imagen nueva */
     text-decoration: none;
     color: #EAE0CF;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 24px;
     box-sizing: border-box;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .project-preview:active {
