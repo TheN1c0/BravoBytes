@@ -22,9 +22,9 @@ export class OnboardingService {
     {
       id: 'projects',
       targetSelector: '[data-onboarding="projects"], [data-onboarding="projects-hero"]',
-      title: 'Mis Proyectos',
-      description: 'Conoce los proyectos que he desarrollado.',
-      icon: '📁',
+      title: 'Productos & Desarrollos',
+      description: 'Conoce las herramientas de software, extensiones y aplicaciones funcionales creadas por BravoBytes.',
+      icon: '🚀',
       badgeText: 'Paso 1 de 2',
       preferredPosition: 'bottom'
     },
@@ -32,7 +32,7 @@ export class OnboardingService {
       id: 'ai-assistant',
       targetSelector: '[data-onboarding="ai-assistant"]',
       title: 'BravoBot AI Assistant',
-      description: 'También puedes preguntarle a mi asistente de IA sobre mi perfil, proyectos y tecnologías.',
+      description: 'Pregúntale a la IA sobre las soluciones desarrolladas, capacidades técnicas o cómo podemos colaborar.',
       icon: '🤖',
       badgeText: 'Paso 2 de 2',
       preferredPosition: 'top'

@@ -33,11 +33,15 @@ export function getRelevantKnowledge(userMessage: string): KnowledgeSelectionRes
   const sections: string[] = [];
 
   // 2. Specific Project Queries
+  const mentionsMultiCopy = /\b(multicopy|multi copy|extensi[oó]n\w*|excel\w*|sheets|autofill|formulario\w*|service workers?|content scripts?|manifest v3|autocomplet\w*)\b/i.test(query);
   const mentionsNixLang = /\b(nixlang|nix|edtech)\b/i.test(query);
   const mentionsSmartEnglish = /\b(smart english|english notes|apuntes|ia en ingles|audio)\b/i.test(query);
   const mentionsBravoBytes = /\b(bravobytes|portfolio|portafolio|asistente|bravobot)\b/i.test(query);
   const mentionsGeneralProjects = /\b(proyectos?|desarrollos?|aplicaci[oó]n|aplicaciones|apps?)\b/i.test(query);
 
+  if (mentionsMultiCopy) {
+    sections.push(PROJECTS_DATA.multicopy);
+  }
   if (mentionsNixLang) {
     sections.push(PROJECTS_DATA.nixlang);
   }
@@ -47,7 +51,7 @@ export function getRelevantKnowledge(userMessage: string): KnowledgeSelectionRes
   if (mentionsBravoBytes) {
     sections.push(PROJECTS_DATA.bravoBytes);
   }
-  if (mentionsGeneralProjects && !mentionsNixLang && !mentionsSmartEnglish && !mentionsBravoBytes) {
+  if (mentionsGeneralProjects && !mentionsMultiCopy && !mentionsNixLang && !mentionsSmartEnglish && !mentionsBravoBytes) {
     sections.push(ALL_PROJECTS_SUMMARY);
   }
 

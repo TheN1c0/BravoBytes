@@ -1,4 +1,13 @@
 export const PROJECTS_DATA = {
+  multicopy: `PROYECTO: MultiCopy (Extensión de Navegador / Excel Form Autofill)
+- Propósito: Extensión de navegador que automatiza el llenado de formularios web a partir de datos copiados directamente desde hojas de cálculo (Excel o Google Sheets).
+- Objetivo: Eliminar tareas repetitivas y propensas a errores manuales vinculando columnas con campos web mediante un selector visual interactivo y autocompletándolos al instante con un atajo de teclado.
+- Tecnologías: JavaScript Vanilla (ES6+), HTML5, CSS3, Chromium Manifest V3 (Chrome, Edge, Brave, Opera).
+- Arquitectura: Modular basada en Service Workers, Content Scripts e inyección dinámica en el DOM.
+- Compatibilidad SPA: Compatible con aplicaciones en React, Vue y Angular mediante emulación de eventos sintéticos y setters nativos de inputs.
+- Privacidad y Seguridad: Operación 100% en local mediante chrome.storage sin servidores externos ni recolección de datos personales.
+- Estado: En espera de aprobación y publicación en Microsoft Edge Add-ons y Chrome Web Store. Video de presentación disponible en YouTube.`,
+
   nixlang: `PROYECTO: NixLang (Plataforma EdTech de Inglés)
 - Propósito: Plataforma para el aprendizaje interactivo del idioma inglés.
 - Estado: En etapa final de desarrollo.
@@ -25,6 +34,7 @@ export const PROJECTS_DATA = {
 };
 
 export const ALL_PROJECTS_SUMMARY = `PROYECTOS DESTACADOS:
-1. NixLang: Plataforma EdTech de inglés en etapa final de desarrollo (.NET, C#, Angular, Clean Architecture, DDD, MediatR, PostgreSQL, Docker).
-2. Smart English Notes: App interactiva de aprendizaje de inglés potenciada por IA generativa (Gemini) y APIs de audio.
-3. BravoBytes: Portafolio personal en Angular 18 SSR con asistente virtual serverless en Netlify Functions y OpenRouter.`;
+1. MultiCopy: Extensión Chromium (Manifest V3, Service Workers, Content Scripts, SPAs React/Vue/Angular, chrome.storage local) para autocompletar formularios web desde Excel/Sheets.
+2. NixLang: Plataforma EdTech de inglés en etapa final de desarrollo (.NET, C#, Angular, Clean Architecture, DDD, MediatR, PostgreSQL, Docker).
+3. Smart English Notes: App interactiva de aprendizaje de inglés potenciada por IA generativa (Gemini) y APIs de audio.
+4. BravoBytes: Portafolio personal en Angular 18 SSR con asistente virtual serverless en Netlify Functions y OpenRouter.`;

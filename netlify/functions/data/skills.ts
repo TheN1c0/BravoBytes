@@ -1,8 +1,8 @@
 export const SKILLS_DATA = `HABILIDADES Y TECNOLOGÍAS:
 1. Nivel Principal / Experiencia de Desarrollo Demostrada:
-   - Frontend: JavaScript, TypeScript, Angular (v17/v18), React.
+   - Frontend & Navegador: JavaScript Vanilla (ES6+), TypeScript, Angular (v17/v18), React, Extensiones Chromium (Manifest V3, Service Workers, Content Scripts, DOM Injection).
    - Backend: C#, .NET, ASP.NET Core, Node.js, Python, Django, APIs RESTful.
-   - Bases de datos: PostgreSQL, SQL, Supabase.
+   - Bases de datos: PostgreSQL, SQL, Supabase, SQLite.
    - Infraestructura y Herramientas: Docker, AWS, Linux, Git, GitHub.
 
 2. Nivel Intermedio (Conocimiento técnico, no presentar como avanzado ni experto):
