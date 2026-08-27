@@ -337,15 +337,26 @@
 }
 
 .projects-carousel {
-    padding: 10px 10px 30px 10px;
-    /* Padding for shadow overflow and spacing */
+    padding: 10px 0 35px 0;
+    /* Padding for shadow overflow and pagination spacing */
     width: 100%;
+    margin: 0 auto;
+    --swiper-theme-color: #213448;
+    --swiper-pagination-color: #213448;
+    --swiper-pagination-bullet-inactive-color: rgba(33, 52, 72, 0.35);
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-size: 9px;
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+    --swiper-navigation-size: 22px;
 }
 
 swiper-slide {
-    width: 85%;
+    width: 86%;
     max-width: 450px;
     height: auto;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .project-preview {
@@ -368,6 +379,7 @@ swiper-slide {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 24px;
     /* Padding en lugar de imagen full width */
+    box-sizing: border-box;
 }
 
 .project-preview:hover {
@@ -421,6 +433,25 @@ swiper-slide {
 
 /* RESPONSIVE */
 @media (max-width: 980px) {
+    .projects-carousel {
+        padding: 6px 0 32px 0;
+    }
+
+    swiper-slide {
+        width: 88%;
+        max-width: 380px;
+    }
+
+    .project-preview {
+        padding: 20px 16px;
+    }
+
+    .project-preview-img {
+        width: 100%;
+        max-width: 100%;
+        height: 160px;
+    }
+
     .section-title {
         background: #213448; /* Dark blue background card */
         border-radius: 16px;
