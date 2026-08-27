@@ -1,7 +1,7 @@
 export const CONTACT_DATA = `INFORMACIÓN DE CONTACTO PÚBLICA:
 - Email: nbravo.nicob@gmail.com
-- LinkedIn: [Nicolás Bravo Guzmán | LinkedIn](https://www.linkedin.com/in/nicolasbravoguzmananalistaprogramador/)
-- GitHub: https://github.com/TheN1c0
+- LinkedIn: [Perfil de LinkedIn](https://www.linkedin.com/in/nicolasbravoguzmananalistaprogramador/)
+- GitHub: [Perfil de GitHub](https://github.com/TheN1c0)
 - Plataforma web: Sección de Contacto en BravoBytes (con accesos directos a Email, LinkedIn y GitHub).
 - Ubicación: Región Metropolitana, Chile.
 
