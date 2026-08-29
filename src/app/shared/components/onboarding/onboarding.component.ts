@@ -278,4 +278,16 @@ export class OnboardingComponent implements OnInit, OnDestroy {
   onSkip(): void {
     this.onboardingService.skipTour();
   }
+
+  onCloseRecommendationTemp(): void {
+    this.onboardingService.closeRecommendationTemporarily();
+  }
+
+  onDismissRecommendationPerm(): void {
+    this.onboardingService.dismissRecommendationPermanently();
+  }
+
+  onOpenMultiCopyStore(): void {
+    this.onboardingService.openMultiCopyStore();
+  }
 }

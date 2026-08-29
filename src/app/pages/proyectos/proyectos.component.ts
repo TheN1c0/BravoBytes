@@ -78,13 +78,14 @@ export class ProyectosComponent implements OnInit {
         imagenCard: 'proyectosimg/multicopy_card.jpg',
         imagenDetalle: [],
         videoUrl: 'https://www.youtube.com/embed/Kqk3ErFegSA',
+        linkSitio: 'https://microsoftedge.microsoft.com/addons/detail/multicopy-excel-form-au/mgfofggplgekkejigmchemfhofbpncji',
         caracteristicas: [
           'Autocompletado instantáneo de formularios web mediante atajos de teclado personalizables (Ctrl+Shift+V)',
           'Selector visual interactivo en pantalla para mapear columnas de Excel/Google Sheets a campos del DOM',
           'Arquitectura modular basada en Chromium Manifest V3 con Service Workers y Content Scripts',
           'Compatibilidad total con Single Page Applications (SPAs en React, Vue y Angular) mediante emulación de eventos sintéticos y setters nativos',
           'Máxima seguridad y privacidad: ejecución 100% local en el cliente con chrome.storage (sin servidores ni analíticas externas)',
-          'En proceso de revisión y publicación para Microsoft Edge Add-ons y Chrome Web Store'
+          'Disponible oficialmente en Microsoft Edge Add-ons (próximamente en Chrome Web Store)'
         ],
         tecnologias: [
           { nombre: 'JavaScript (ES6+)', icono: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },

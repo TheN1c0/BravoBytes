@@ -6,7 +6,7 @@ export const PROJECTS_DATA = {
 - Arquitectura: Modular basada en Service Workers, Content Scripts e inyección dinámica en el DOM.
 - Compatibilidad SPA: Compatible con aplicaciones en React, Vue y Angular mediante emulación de eventos sintéticos y setters nativos de inputs.
 - Privacidad y Seguridad: Operación 100% en local mediante chrome.storage sin servidores externos ni recolección de datos personales.
-- Estado: En espera de aprobación y publicación en Microsoft Edge Add-ons y Chrome Web Store. Video de presentación disponible en YouTube.`,
+- Estado: Ya disponible y publicado oficialmente en la tienda de Microsoft Edge Add-ons (https://microsoftedge.microsoft.com/addons/detail/multicopy-excel-form-au/mgfofggplgekkejigmchemfhofbpncji). Próximamente en Chrome Web Store. Video de presentación disponible en YouTube.`,
 
   nixlang: `PROYECTO: NixLang (Plataforma EdTech de Inglés)
 - Propósito: Plataforma para el aprendizaje interactivo del idioma inglés.

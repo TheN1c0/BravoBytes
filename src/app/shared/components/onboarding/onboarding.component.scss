@@ -387,6 +387,194 @@
   }
 }
 
+@keyframes recomSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   VENTANA FLOTANTE NO INVASIVA DE RECOMENDACIÓN MULTICOPY
+   ========================================================================== */
+.multicopy-recom-card {
+  box-sizing: border-box;
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  z-index: 9997;
+  background: linear-gradient(145deg, rgba(23, 37, 56, 0.96), rgba(15, 23, 42, 0.98));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(0, 242, 254, 0.45);
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 242, 254, 0.2);
+  color: #EAE0CF;
+  animation: recomSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+
+  .recom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    .recom-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 242, 254, 0.12);
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 20px;
+      padding: 3px 9px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #00f2fe;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+
+      .recom-sparkle {
+        font-size: 0.85rem;
+      }
+    }
+
+    .btn-close-recom {
+      background: transparent;
+      border: none;
+      color: rgba(234, 224, 207, 0.6);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        color: #EAE0CF;
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+  }
+
+  .recom-body {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+
+    .recom-icon-wrapper {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      background: #0f172a;
+
+      .recom-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .recom-info {
+      flex: 1;
+
+      .recom-title {
+        font-size: 0.96rem;
+        font-weight: 700;
+        color: #EAE0CF;
+        margin: 0 0 4px 0;
+        line-height: 1.25;
+      }
+
+      .recom-desc {
+        font-size: 0.82rem;
+        line-height: 1.4;
+        color: #94B4C1;
+        margin: 0;
+      }
+    }
+  }
+
+  .recom-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid rgba(234, 224, 207, 0.08);
+    padding-top: 12px;
+
+    .btn-never-show {
+      background: transparent;
+      border: none;
+      color: rgba(234, 224, 207, 0.55);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 5px 2px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #EAE0CF;
+      }
+    }
+
+    .btn-store-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      color: #0b1320;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0, 242, 254, 0.35);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+
+      .edge-store-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.06);
+        box-shadow: 0 6px 18px rgba(0, 242, 254, 0.5);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
@@ -428,6 +616,27 @@
 
     &.arrow-down .card-arrow {
       right: 28px;
+    }
+  }
+
+  .multicopy-recom-card {
+    bottom: 84px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: calc(100vw - 32px);
+    padding: 14px 16px;
+
+    .recom-body {
+      .recom-info {
+        .recom-title {
+          font-size: 0.92rem;
+        }
+
+        .recom-desc {
+          font-size: 0.8rem;
+        }
+      }
     }
   }
 }

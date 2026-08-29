@@ -16,7 +16,11 @@ export interface OnboardingStep {
 })
 export class OnboardingService {
   private readonly STORAGE_KEY = 'bravobytes_onboarding_completed';
+  private readonly MULTICOPY_NEVER_SHOW_KEY = 'bravobytes_multicopy_never_show';
+  public readonly MULTICOPY_EDGE_URL = 'https://microsoftedge.microsoft.com/addons/detail/multicopy-excel-form-au/mgfofggplgekkejigmchemfhofbpncji';
+
   private isBrowser: boolean;
+  private sessionDismissed = false;
 
   readonly steps: OnboardingStep[] = [
     {
@@ -41,6 +45,7 @@ export class OnboardingService {
 
   readonly isActive = signal<boolean>(false);
   readonly currentStepIndex = signal<number>(0);
+  readonly showMultiCopyRecommendation = signal<boolean>(false);
 
   readonly currentStep = computed(() => {
     const idx = this.currentStepIndex();
@@ -58,11 +63,13 @@ export class OnboardingService {
   /**
    * Inicializa la comprobación automática para la primera visita
    */
-  initAutoStart(delayMs: number = 1200): void {
+  initAutoStart(delayMs: number = 1400): void {
     if (!this.isBrowser) return;
 
     try {
       const hasCompleted = localStorage.getItem(this.STORAGE_KEY);
+      const neverShow = localStorage.getItem(this.MULTICOPY_NEVER_SHOW_KEY) === 'true';
+
       if (!hasCompleted) {
         setTimeout(() => {
           // Solo iniciamos automáticamente si no se ha marcado como completado
@@ -70,6 +77,14 @@ export class OnboardingService {
             this.startTour();
           }
         }, delayMs);
+      } else if (!neverShow && !this.sessionDismissed) {
+        // Si ya completó el tour previamente pero solo cerró con X (no permanente),
+        // mostramos la recomendación con un retardo amigable
+        setTimeout(() => {
+          if (!this.sessionDismissed && !this.isActive()) {
+            this.showMultiCopyRecommendation.set(true);
+          }
+        }, delayMs + 600);
       }
     } catch {
       // Ignorar errores de acceso a localStorage en entornos restrictivos
@@ -80,6 +95,7 @@ export class OnboardingService {
    * Inicia el tour desde el primer paso
    */
   startTour(): void {
+    this.showMultiCopyRecommendation.set(false);
     this.currentStepIndex.set(0);
     this.isActive.set(true);
   }
@@ -88,6 +104,7 @@ export class OnboardingService {
    * Reinicia manualmente el tour (utilizado por el botón '?')
    */
   restartTour(): void {
+    this.showMultiCopyRecommendation.set(false);
     this.currentStepIndex.set(0);
     this.isActive.set(true);
   }
@@ -113,23 +130,82 @@ export class OnboardingService {
   }
 
   /**
-   * Finaliza el tour y guarda la persistencia
+   * Finaliza el tour y activa la ventana de recomendación
    */
   completeTour(): void {
     this.isActive.set(false);
     this.saveCompletion();
+    this.triggerMultiCopyRecommendation();
   }
 
   /**
-   * Omite o cierra el tour y guarda la persistencia
+   * Omite o cierra el tour y activa la ventana de recomendación
    */
   skipTour(): void {
     this.isActive.set(false);
     this.saveCompletion();
+    this.triggerMultiCopyRecommendation();
   }
 
   /**
-   * Guarda el estado completado en localStorage
+   * Dispara suavemente la ventana de recomendación si no ha sido descartada permanentemente
+   */
+  private triggerMultiCopyRecommendation(delayMs: number = 380): void {
+    if (!this.isBrowser) return;
+
+    try {
+      const neverShow = localStorage.getItem(this.MULTICOPY_NEVER_SHOW_KEY) === 'true';
+      if (!neverShow && !this.sessionDismissed) {
+        setTimeout(() => {
+          if (!this.sessionDismissed && !this.isActive()) {
+            this.showMultiCopyRecommendation.set(true);
+          }
+        }, delayMs);
+      }
+    } catch {
+      // Safe fallback
+    }
+  }
+
+  /**
+   * Cierra temporalmente la ventana de recomendación al pulsar 'X'.
+   * Se volverá a mostrar la próxima vez que el usuario visite la página.
+   */
+  closeRecommendationTemporarily(): void {
+    this.sessionDismissed = true;
+    this.showMultiCopyRecommendation.set(false);
+  }
+
+  /**
+   * Cierra permanentemente la ventana de recomendación al pulsar 'No volver a mostrar'.
+   * No se volverá a mostrar más.
+   */
+  dismissRecommendationPermanently(): void {
+    this.sessionDismissed = true;
+    this.showMultiCopyRecommendation.set(false);
+    if (this.isBrowser) {
+      try {
+        localStorage.setItem(this.MULTICOPY_NEVER_SHOW_KEY, 'true');
+      } catch {
+        // Safe fallback
+      }
+    }
+  }
+
+  /**
+   * Abre la URL oficial de la extensión MultiCopy en Microsoft Edge Add-ons
+   */
+  openMultiCopyStore(): void {
+    if (this.isBrowser) {
+      window.open(this.MULTICOPY_EDGE_URL, '_blank', 'noopener,noreferrer');
+    }
+    // Cerramos temporalmente tras abrir para permitir continuar navegando
+    this.sessionDismissed = true;
+    this.showMultiCopyRecommendation.set(false);
+  }
+
+  /**
+   * Guarda el estado completado del onboarding en localStorage
    */
   private saveCompletion(): void {
     if (this.isBrowser) {

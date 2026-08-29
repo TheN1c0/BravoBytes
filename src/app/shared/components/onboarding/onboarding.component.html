@@ -116,3 +116,69 @@
 
   </aside>
 </div>
+
+<!-- Ventana Flotante No Invasiva de Recomendación de MultiCopy (Post-Instrucciones / Nuevos Usuarios) -->
+<aside 
+  class="multicopy-recom-card"
+  *ngIf="onboardingService.showMultiCopyRecommendation()"
+  role="complementary"
+  aria-label="Recomendación de MultiCopy en Microsoft Edge Add-ons">
+
+  <!-- Header de la recomendación -->
+  <header class="recom-header">
+    <div class="recom-badge">
+      <span class="recom-sparkle">✨</span>
+      <span class="recom-badge-text">Extensión Oficial</span>
+    </div>
+    <!-- Botón X: Cierra por esta sesión, se volverá a mostrar la próxima vez -->
+    <button 
+      type="button" 
+      class="btn-close-recom" 
+      (click)="onCloseRecommendationTemp()" 
+      title="Cerrar por ahora"
+      aria-label="Cerrar por ahora">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Cuerpo de la recomendación -->
+  <div class="recom-body">
+    <div class="recom-icon-wrapper">
+      <img src="proyectosimg/multicopy_card.jpg" alt="Icono MultiCopy" class="recom-thumb">
+    </div>
+    <div class="recom-info">
+      <h4 class="recom-title">MultiCopy para Microsoft Edge</h4>
+      <p class="recom-desc">
+        ¡Ya disponible en Microsoft Edge Add-ons! Automatiza el llenado de formularios web desde Excel o Google Sheets con ejecución 100% local.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer con acciones: 'No volver a mostrar' y 'Ver en Tienda' -->
+  <footer class="recom-footer">
+    <button 
+      type="button" 
+      class="btn-never-show" 
+      (click)="onDismissRecommendationPerm()"
+      title="No volver a mostrar esta recomendación">
+      No volver a mostrar
+    </button>
+
+    <a 
+      [href]="onboardingService.MULTICOPY_EDGE_URL" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="btn-store-cta"
+      (click)="onOpenMultiCopyStore()">
+      <svg class="edge-store-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+      <span>Ver en Tienda</span>
+    </a>
+  </footer>
+</aside>
